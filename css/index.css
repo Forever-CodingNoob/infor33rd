@@ -1,0 +1,107 @@
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+body, html {
+    margin:0px;
+    height: 100%;
+}
+.navbar{
+    overflow: visible;
+    background-color: #333;
+    font-family:consolas, monospace;
+    line-height: 50px;
+    height: auto;
+    list-style-type: none;
+    opacity: 0.8;
+}
+.navbar ul {
+    display: flex;
+    align-content:center;
+    margin:0px;
+    padding:0px;
+    font-size:1.2em;
+}
+
+.navbar li {
+    float: left;
+    display: inline-block;
+    padding:10px 10px;
+    overflow: hidden;
+}
+
+.navbar li a {
+    position: relative;
+    display: inline;
+    color: white;
+    text-align: center;
+    padding: 5px 5px;
+    text-decoration: none;
+    border-radius:5px;
+    z-index: 1;
+}
+
+.navbar li a:hover {
+    background-color: #111;
+}
+.colored-btn{
+    position: relative;
+}
+.colored-btn::after{
+    background-color:#02a33a;
+    display: inline-block;
+    position:absolute;
+    content: "";
+    padding-bottom: 100%;
+    padding-top: 100%;
+    width: 200%;
+    bottom: -75%;
+    left:-50%;
+    border-radius: 40%;
+    transform: translateY(100%) rotate(-45deg);
+    transition: all 1s ease-in-out 0s;
+    
+    /*animation: spin 6s ease-in-out 1;*/
+    
+    &.green{
+        background-color:green;
+    }
+    &.blue{
+        background-color:blue;
+    }
+    &.orange{
+        background-color:orangered;
+    }
+}
+.colored-btn.running::after{
+    transform: translateY(0%) rotate(3150deg);
+}
+@keyframes spin{
+    0%{
+        transform:  rotate(0deg);
+        
+    }
+    100%{
+        transform:  rotate(360deg);
+    }
+}
+.main-img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -6;
+    background-image: url("../img/IMG_5134.JPG");
+    height: 150vh;
+    width: 100%;
+    background-attachment: fixed;
+    /*background-position: 50% 0px;*/
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+.main{
+    position: absolute;
+    top: 120%;
+    background-color: #4180cc;
+}
