@@ -16,15 +16,15 @@
                 <li class="colored-btn blue">
                     <a href="#news">News</a>
                 </li>
-                <li class="colored-btn red">
+                <li class="colored-btn orange">
                     <a href="#contact">Contact</a>
                 </li>
-                <li class="colored-btn red">
+                <li class="colored-btn orange">
                     <a href="#about">嗨嗨嗨嗨嗨嗨嗨</a>
                 </li>
 			</ul>
 		</nav>
-        <div class="main-img"></div>
+        <div id="main-img"></div>
         <div class="main">
             裡期然風方定當
             好的權大，重們統人導的？時過家鄉爾立是兒市原嚴我片，洲前成路這頭合裡人地定一是人持何於人用看的而我顯車關是來電在空是太過地資同牛會同及定在，營長元已幾本料利己。音紅們美歌於們房男政重系內形家的生新戰質、華部裡是書便連線精：可間小陽會境立聲斯老：身時似交；成務文之平出。麼民說她而身們物，景本交畫兒吃制少時每應她高告高日所八傳地仍持這，取該個，下有斷自至著晚國？管種眾，期洋自親，師思負小表養，年然馬的球至定答品，態樣效但初小、此人行媽拿案亞保多北的從結的上臉長！
@@ -58,23 +58,39 @@
             
             var scroll_velocity = 0.2;
             var main_img_move_up_inPX=150;
-            function update(){ 
+            function update_mainbackgroundimg(){ 
                 var pos = $(window).scrollTop(); 
-                $('.main-img').each(function() { 
-                    var $element = $(this);
-                    // subtract some from the height b/c of the padding
-                    $(this).css('backgroundPosition', '50% ' + Math.round(-pos * scroll_velocity-main_img_move_up_inPX) +  'px'); 
-                }); 
-                $("#show").text($('.main-img').height()+"  "+$(window).scrollTop());
+                // subtract some from the height b/c of the padding
+                $('#main-img').css('backgroundPosition', '50% ' + Math.round(-pos * scroll_velocity-main_img_move_up_inPX) +  'px'); 
+                $("#show").text($('#main-img').height()+"  "+$(window).scrollTop());
             };
-            $(window).bind('scroll', update);
+            $(window).bind('scroll', update_mainbackgroundimg);
             
-            $("#show").on('click',function(){
-                var url = $('.main-img').css('background-image').replace('url(', '').replace(')', '').replace("'", '').replace('"', '');
-                alert(document.getElementsByClassName('main-img')[0].style.backgroundSize );
+            $(window).on('resize',function(){
+                var main_img= $('#main-img');
+                
+                // Remove url() or in case of Chrome url("") in "background-image" css property of the main background img
+                var image_url = main_img.css('background-image').match(/^url\("?(.+?)"?\)$/)[1];
+                console.log(image_url);
+                
+                var image=new Image();
+                $(image).on('load',function () {
+                    //alert('image loaded!!!  '+image.width + 'x' + image.height);
+                });
+                //assign img url to img element
+                image.src = image_url;
+                
+                var window_width=$(window).width();
+                var window_height=$(window).height();
+                console.log(window_height/window_width>image.height/image.width);
+                if(window_height/window_width<image.height/image.width){
+                    main_img.css('background-size','100% auto');
+                }else{
+                    main_img.css('background-size','auto 150%');
+                }
             });
             $(document).ready(function(){
-                update();
+                update_mainbackgroundimg();
             })
         </script>
 	</body>

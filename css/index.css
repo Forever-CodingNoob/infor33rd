@@ -64,18 +64,13 @@ body, html {
     
     /*animation: spin 6s ease-in-out 1;*/
     
-    &.green{
-        background-color:green;
-    }
-    &.blue{
-        background-color:blue;
-    }
-    &.orange{
-        background-color:orangered;
-    }
+
 }
+.colored-btn.green::after{ background-color:green;}
+.colored-btn.orange::after{ background-color:orangered;}
+.colored-btn.blue::after{ background-color:blue;}
 .colored-btn.running::after{
-    transform: translateY(0%) rotate(3150deg);
+    transform: translateY(0%) rotate(315deg);
 }
 @keyframes spin{
     0%{
@@ -86,7 +81,7 @@ body, html {
         transform:  rotate(360deg);
     }
 }
-.main-img{
+#main-img{
     position: absolute;
     top: 0;
     left: 0;
