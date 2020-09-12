@@ -83,6 +83,7 @@
                 var window_width=$(window).width();
                 var window_height=$(window).height();
                 console.log(window_height/window_width>image.height/image.width);
+                console.log("window's width: "+window_width+"  window's height: "+window_height+"\n"+"img width: "+image.width+"  img height: "+image.height);
                 if(window_height/window_width<image.height/image.width){
                     main_img.css('background-size','100% auto');
                 }else{
