@@ -57,11 +57,11 @@
             );
             
             var scroll_velocity = 0.2;
-            var main_img_move_up_inPX=150;
+            var main_img_move_up_inPercentage=50;
             function update_mainbackgroundimg(){ 
                 var pos = $(window).scrollTop(); 
                 // subtract some from the height b/c of the padding
-                $('#main-img').css('backgroundPosition', '50% ' + Math.round(-pos * scroll_velocity-main_img_move_up_inPX) +  'px'); 
+                $('#main-img').css('backgroundPosition', '50% calc(' + Math.round(-pos * scroll_velocity) +  'px +  '+main_img_move_up_inPercentage+"%)"); 
                 $("#show").text($('#main-img').height()+"  "+$(window).scrollTop());
             };
             $(window).bind('scroll', update_mainbackgroundimg);
@@ -82,12 +82,13 @@
                 
                 var window_width=$(window).width();
                 var window_height=$(window).height();
-                console.log(window_height/window_width>image.height/image.width);
-                console.log("window's width: "+window_width+"  window's height: "+window_height+"\n"+"img width: "+image.width+"  img height: "+image.height);
+                console.log("window's width: "+window_width+"  window's height: "+window_height+"\n"+"img width: "+image.width+"  img height: "+image.height+"\n"+"window:"+window_height/window_width);
                 if(window_height/window_width<image.height/image.width){
                     main_img.css('background-size','100% auto');
+                    console.log('make width feet');
                 }else{
                     main_img.css('background-size','auto 150%');
+                    console.log('make height feet');
                 }
             });
             $(document).ready(function(){
