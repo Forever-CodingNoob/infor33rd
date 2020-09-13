@@ -25,7 +25,7 @@
 			</ul>
 		</nav>
         <div id="main-img"></div>
-        <div class="main">
+        <div id="main">
             裡期然風方定當
             好的權大，重們統人導的？時過家鄉爾立是兒市原嚴我片，洲前成路這頭合裡人地定一是人持何於人用看的而我顯車關是來電在空是太過地資同牛會同及定在，營長元已幾本料利己。音紅們美歌於們房男政重系內形家的生新戰質、華部裡是書便連線精：可間小陽會境立聲斯老：身時似交；成務文之平出。麼民說她而身們物，景本交畫兒吃制少時每應她高告高日所八傳地仍持這，取該個，下有斷自至著晚國？管種眾，期洋自親，師思負小表養，年然馬的球至定答品，態樣效但初小、此人行媽拿案亞保多北的從結的上臉長！
 
@@ -47,6 +47,9 @@
         </div>
         <button id="show" style="position: fixed;">show</button>
         <script>
+            var breakpoint = false;
+            
+            
             $('.colored-btn a').hover(
                 function(){
                     $(this).parent().addClass('running'); 
@@ -62,9 +65,48 @@
                 var pos = $(window).scrollTop(); 
                 // subtract some from the height b/c of the padding
                 $('#main-img').css('backgroundPosition', '50% calc(' + Math.round(-pos * scroll_velocity) +  'px +  '+main_img_move_up_inPercentage+"%)"); 
-                $("#show").text($('#main-img').height()+"  "+$(window).scrollTop());
+                $("#show").text($('#main-img').height()+"  "+$(window).scrollTop()+"  "+$('#main').offset().top+"  <br>breakpoint:  "+breakpoint);
             };
-            $(window).bind('scroll', update_mainbackgroundimg);
+            $(window).on('scroll', function(){
+                update_mainbackgroundimg();
+                var main_div=$("#main");
+                if($(this).scrollTop()+$(this).height()>main_div.offset().top && breakpoint===false){
+                    breakpoint='animating';
+                    var hash="main";
+                    $('html , body').animate(
+                        {
+                            scrollTop: main_div.offset().top
+                        },
+                        800,
+                        //executed after the animation!
+                        function(){
+                            //alert('under break point!');
+                            breakpoint=true;
+                            window.location.hash=hash;
+                        }
+                        
+                    );
+                    console.log('finished under bp!'+breakpoint);
+                }
+                if($(this).scrollTop()<main_div.offset().top && breakpoint===true){
+                    breakpoint='animating';
+                    
+                    $('html , body').animate(
+                        {
+                            scrollTop: 0
+                        },
+                        800,
+                        //executed after the animation!
+                        function(){
+                            //alert('above break point!');
+                            breakpoint=false;
+                            window.location.hash="";
+                        }
+                        
+                    );
+                    console.log('finished after bp!'+breakpoint);
+                }
+            });
             
             $(window).on('resize',function(){
                 var main_img= $('#main-img');

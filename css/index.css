@@ -95,8 +95,9 @@ body, html {
     background-size: cover;
     
 }
-.main{
+#main{
     position: absolute;
     top: 120%;
     background-color: #4180cc;
+    font-size:2em;
 }
