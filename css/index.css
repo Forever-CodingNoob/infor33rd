@@ -96,8 +96,9 @@ body, html {
     
 }
 #main{
+    color: white;
     position: absolute;
     top: 120%;
-    background-color: #4180cc;
+    background-color: #252c36;
     font-size:2em;
-}
+    box-shadow:0px -50px 120px 100px #252c36;
