@@ -88,6 +88,7 @@ body, html {
 #jellies img{
     z-index: -3;
     position: absolute;
+    opacity: 1;
 }
 #main-img{
     position: absolute;
