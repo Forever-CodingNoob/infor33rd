@@ -6,15 +6,19 @@
 body, html {
     margin:0px;
     height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    position: static;
 }
 .navbar{
-    overflow: visible;
     background-color: #333;
     font-family:consolas, monospace;
     line-height: 50px;
     height: auto;
     list-style-type: none;
     opacity: 0.8;
+    overflow: hidden;
+    position: relative;
 }
 .navbar ul {
     display: flex;
@@ -80,6 +84,10 @@ body, html {
     100%{
         transform:  rotate(360deg);
     }
+}
+#jellies img{
+    z-index: -3;
+    position: absolute;
 }
 #main-img{
     position: absolute;

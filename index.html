@@ -9,7 +9,7 @@
         <title>INFOR 33rd</title>
 	</head>
 	<body>
-		<nav class="navbar">
+		<nav class="navbar" id="main-nav">
 			<ul>
                 <li class="colored-btn green">
                     <a class="active" href="#home">Home</a>
@@ -24,6 +24,7 @@
                     <a href="#about">嗨嗨嗨嗨嗨嗨嗨</a>
                 </li>
 			</ul>
+            <div id="jellies"></div>
 		</nav>
         <div id="main-img"></div>
         <div id="main">
@@ -46,7 +47,11 @@
 
 
         </div>
-        <button id="show" style="position: fixed;">show</button>
+        <button id="show" style="position: relative;">show</button><br>
+        <span style="position: relative; background-color: white">
+            <label for="spam">SPAM JELLIES</label>
+            <input type="checkbox" id="spam">
+        </span>
         <script>
             var breakpoint = false;
             
@@ -138,16 +143,81 @@
             
             
             function addJellyFish(){
+                var size=150;
+                var image=new Image(size,size);
+                image.src="/img/jelly.png";
                 
+                var start_height=-(image.height-$("#main-nav").height())/2;
+                if(randint(0,1)){
+                    var direction='right';
+                    var start_posleft=-image.width;
+                }else{
+                    var direction='left';
+                    var start_posleft=$(window).width();
+                }
+                image.setAttribute('data-movement-direction',direction);
+                
+                var speed_max=5;
+                var speed=Math.random()*speed_max;
+                var angle=0;
+                var rotation_speed_max = 5;
+                var rotation_speed = Math.random()*(2*rotation_speed_max)-rotation_speed_max;
+                var horizontal_scale=randfloat(1/500,1/16);
+                function height_trail_func(left){
+                    return Math.sin(left*horizontal_scale)*20+start_height;
+                }
+                image.style.left=start_posleft+"px";
+                $("#jellies").prepend(image);
+                var id=setInterval(
+                    function(){
+                        var left=image.offsetLeft;
+                        var direction=image.getAttribute('data-movement-direction');
+                        image.style.top=height_trail_func(left)+"px";
+                        if(direction=='right') left+=speed;
+                        else left-=speed;
+                        image.style.left=left+"px";
+                        angle+=rotation_speed;
+                        $(image).css('transform',"rotate("+angle+"deg)");
+                        if (left>=$(window).width() || left<=-image.width){
+                            remove(image);
+                            clearInterval(id);
+                        }
+                    },
+                    50
+                );
                 
             }
-            
-            
-            
+            function spam_jellies(interval){
+                addJellyFish();
+                var rand_millisec=(typeof interval==='undefined')?randint(3000,5000):interval;
+                setTimeout(spam_jellies,rand_millisec);
+            }
+            function crazily_spam_jellies(){
+                addJellyFish();
+                var rand_millisec=100;
+                if($("#spam").prop('checked')){
+                    setTimeout(crazily_spam_jellies,rand_millisec);
+                }
+            }
+            $("#spam").on('change',function(){
+                if($(this).prop('checked')){
+                    crazily_spam_jellies();
+                }
+            });
+            function remove(elem){
+                elem.parentNode.removeChild(elem);
+            }
+            function randint(start,end){
+                return Math.floor(Math.random()*(end-start+1)+start);
+            }
+            function randfloat(start,end){
+                return Math.random()*(end-start)+start;
+            }
             
             $(document).ready(function(){
                 update_mainbackgroundimg();
                 $(window).trigger('resize');//trigger window's resize event so that the function which properly adjust sreen size will be triggered too
+                spam_jellies();
             })
         </script>
 	</body>
