@@ -11,6 +11,7 @@ body, html {
     position: static;
 }
 .navbar{
+    z-index: 5;
     background-color: #333;
     font-family:consolas, monospace;
     line-height: 50px;
@@ -43,7 +44,7 @@ body, html {
     padding: 5px 5px;
     text-decoration: none;
     border-radius:5px;
-    z-index: 1;
+    z-index: 50;
 }
 
 .navbar li a:hover {
@@ -65,6 +66,7 @@ body, html {
     border-radius: 40%;
     transform: translateY(100%) rotate(-45deg);
     transition: all 1s ease-in-out 0s;
+    z-index: 10;
     
     /*animation: spin 6s ease-in-out 1;*/
     
@@ -86,15 +88,90 @@ body, html {
     }
 }
 #jellies img{
-    z-index: -3;
+    z-index: 8;
     position: absolute;
     opacity: 1;
 }
+
+
+#cover{
+    position: absolute;
+    top: 0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+.title{
+    left: 20%;
+    top: 40%;
+    position: absolute;
+    display: inline-block;
+    float: left;
+}
+.title > *{
+    position: relative;
+    
+}
+.title > .maintitle{
+    font-family:"courier new", monospace;
+    color: #FFFFFF;
+    font-size: 7em;
+    animation-name: fadein;
+    animation-duration: 2s;
+    animation-fill-mode: both;
+    
+}
+.title > .subtitle{
+    font-family:微軟正黑體, monospace;
+    color: #FFFFFF;
+    font-size: 2.5em;
+    left: 10vw;
+    animation-name: shake;
+    animation-duration: 1s;
+    animation-delay: 0.3s;
+    animation-fill-mode: both;
+    animation-iteration-count: infinite
+}
+
+@keyframes fadein{
+    0%{
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    100%{
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+@keyframes shake{
+    0%{
+        transform: translateX(80px) translateY(0px) rotateZ(0);
+    }
+    12.5%{
+        transform: translateX(80px) translateY(-30px) rotateZ(-30deg);
+    }
+    
+    37.5%{
+        transform: translateX(-80px) translateY(30px) rotateZ(-30deg);
+    }
+    62.5%{
+        transform: translateX(-80px) translateY(-30px) rotateZ(30deg);
+    }
+    87.5%{
+        transform: translateX(80px) translateY(30px) rotateZ(30deg);
+    }
+    100%{
+        transform: translateX(80px) translateY(0px) rotateZ(0);
+    }
+}
+
+
 #main-img{
     position: absolute;
     top: 0;
     left: 0;
-    z-index: -6;
+    z-index: -10;
     background-image: url("../img/IMG_5134.JPG");
     height: 150vh;
     width: 100%;
@@ -111,3 +188,4 @@ body, html {
     background-color: #252c36;
     font-size:2em;
     box-shadow:0px -50px 120px 100px #252c36;
+}
