@@ -114,10 +114,10 @@ body, html {
     
 }
 .title > .maintitle{
-    font-family:"courier new", monospace;
+    font-family:"Lucida Console", monospace;
     color: #FFFFFF;
     font-size: 7em;
-    animation-name: fadein;
+    animation-name: fadein,shadow;
     animation-duration: 2s;
     animation-fill-mode: both;
     
@@ -127,13 +127,16 @@ body, html {
     color: #FFFFFF;
     font-size: 2.5em;
     left: 10vw;
-    animation-name: shake;
-    animation-duration: 1s;
-    animation-delay: 0.3s;
-    animation-fill-mode: both;
-    animation-iteration-count: infinite
+    animation: fadein 2s ease 0s 1 normal backwards running,shake 0.5s linear 0s infinite normal none running;
 }
-
+@keyframes shadow{
+    0%{
+        text-shadow: 0px 0px 0px #ffdd00;
+    }
+    100%{
+        text-shadow: -10px -10px 0px #ffdd00;
+    }
+}
 @keyframes fadein{
     0%{
         transform: translateY(30px);
@@ -146,23 +149,31 @@ body, html {
 }
 @keyframes shake{
     0%{
-        transform: translateX(80px) translateY(0px) rotateZ(0);
+        transform: rotateZ(0) translateX(50px) translateY(0px) ;
     }
     12.5%{
-        transform: translateX(80px) translateY(-30px) rotateZ(-30deg);
+        transform: rotateZ(-30deg) translateX(30px) translateY(10px);
     }
-    
+    25%{
+        transform: rotateZ(-40deg) translateX(0px) translateY(0px) ;
+    }
     37.5%{
-        transform: translateX(-80px) translateY(30px) rotateZ(-30deg);
+        transform: rotateZ(-30deg) translateX(-30px) translateY(-10px) ;
+    }
+    50%{
+        transform: rotateZ(0) translateX(-50px) translateY(0px) ;
     }
     62.5%{
-        transform: translateX(-80px) translateY(-30px) rotateZ(30deg);
+        transform: rotateZ(30deg) translateX(-30px) translateY(10px) ;
+    }
+    75%{
+        transform: rotateZ(40deg) translateX(0px) translateY(0px) ;
     }
     87.5%{
-        transform: translateX(80px) translateY(30px) rotateZ(30deg);
+        transform: rotateZ(30deg) translateX(30px) translateY(-10px) ;
     }
     100%{
-        transform: translateX(80px) translateY(0px) rotateZ(0);
+        transform: rotateZ(0) translateX(50px) translateY(0px) ;
     }
 }
 
