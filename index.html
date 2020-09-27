@@ -6,6 +6,7 @@
         <meta name="author" content="Forever-CodingNoob">
         <link type="text/css" href="css/index.css" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        
         <title>INFOR 33rd</title>
 	</head>
 	<body>
@@ -39,6 +40,15 @@
         
         
         <div id="main">
+            <div id="intro1">
+                <div id="intro1-title">
+                    Wo we are?
+                </div>
+                <div></div>
+                <div id="intro1-text">
+                    好笑ㄇ
+                </div>
+            </div>
             裡期然風方定當
             好的權大，重們統人導的？時過家鄉爾立是兒市原嚴我片，洲前成路這頭合裡人地定一是人持何於人用看的而我顯車關是來電在空是太過地資同牛會同及定在，營長元已幾本料利己。音紅們美歌於們房男政重系內形家的生新戰質、華部裡是書便連線精：可間小陽會境立聲斯老：身時似交；成務文之平出。麼民說她而身們物，景本交畫兒吃制少時每應她高告高日所八傳地仍持這，取該個，下有斷自至著晚國？管種眾，期洋自親，師思負小表養，年然馬的球至定答品，態樣效但初小、此人行媽拿案亞保多北的從結的上臉長！
 
@@ -58,14 +68,15 @@
 
 
         </div>
-        <button id="show" style="position: absolute; z-index: 10;">show</button><br>
-        <span style="position: absolute; background-color: white; z-index: 10">
+        <button id="show" style="position: fixed; z-index: 10;">show</button><br>
+        <button id="show2" style="position: fixed; z-index: 10;">show</button><br>
+        <span style="position: fixed; background-color: white; z-index: 10">
             <label for="spam">SPAM JELLIES</label>
             <input type="checkbox" id="spam">
         </span>
         <script>
             var breakpoint = false;
-            
+            var mousePos=[0,0];//mousePos==[mouseX,mouseY]
             
             $('.colored-btn a').hover(
                 function(){
@@ -90,6 +101,7 @@
                 if($(this).scrollTop()+$(this).height()>main_div.offset().top && breakpoint===false){
                     breakpoint='animating';
                     var hash="main";
+                    
                     $('html , body').animate(
                         {
                             scrollTop: main_div.offset().top
@@ -100,12 +112,14 @@
                             //alert('under break point!');
                             breakpoint=true;
                             window.location.hash=hash;
+                            $('#main-nav').addClass('hidden light-effect');
+                            showNavbarWhenNeeded();
                         }
                         
                     );
                     console.log('finished under bp!'+breakpoint);
                 }
-                if($(this).scrollTop()<main_div.offset().top && breakpoint===true){
+                else if($(this).scrollTop()<main_div.offset().top && breakpoint===true){
                     breakpoint='animating';
                     
                     $('html , body').animate(
@@ -118,6 +132,7 @@
                             //alert('above break point!');
                             breakpoint=false;
                             window.location.hash="";
+                            $('#main-nav').removeClass('hidden light-effect');
                         }
                         
                     );
@@ -152,7 +167,25 @@
             });
             
             
-            
+            function getMousePosition(event){
+                var mouseX=event.pageX-$(window).scrollLeft();
+                var mouseY=event.pageY-$(window).scrollTop();
+                return [mouseX,mouseY];
+            }
+            $(document).on('mousemove', function(event){
+                mousePos=getMousePosition(event);
+                $('#show2').text("mouse position: "+mousePos[0]+" "+mousePos[1]);
+                showNavbarWhenNeeded();
+            });
+            function showNavbarWhenNeeded(){
+                if(breakpoint===true){
+                    if(mousePos[1]<=25){
+                        $('#main-nav').removeClass('hidden');
+                    }else if(mousePos[1]>$('.navbar').height()){
+                        $('#main-nav').addClass('hidden');        
+                    }
+                }
+            }
             function addJellyFish(certain_speed){
                 var size=150;
                 var image=new Image(size,size);

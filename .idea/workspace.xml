@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="388dcdc8-67c5-4845-9687-6ce6ea9d447d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/index.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,10 +67,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1599373080223" />
-    <state x="326" y="165" key="com.intellij.ide.util.TipDialog" timestamp="1599372794127">
+    <state x="326" y="165" key="com.intellij.ide.util.TipDialog" timestamp="1600523036035">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="326" y="165" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1599372794127" />
+    <state x="326" y="165" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1600523036035" />
     <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1599363920922">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
