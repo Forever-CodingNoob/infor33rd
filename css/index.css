@@ -30,7 +30,7 @@ body, html {
     overflow: hidden;
     position: fixed;
     width: 100%;
-    transition: all .3s cubic-bezier(.15,.02,.24,1.82);
+    transition: transform .3s cubic-bezier(.15,.02,.24,1.82),background-color .3s linear .2s;
     transform: translateY(0px);
 }
 .navbar.hidden{
@@ -80,7 +80,7 @@ body, html {
     left:-50%;
     border-radius: 40%;
     transform: translateY(100%) rotate(-45deg);
-    transition: all 1s ease-in-out 0s;
+    transition: transform 1s ease-in-out 0s,background-color .3s linear .2s;
     z-index: 10;
     
     /*animation: spin 6s ease-in-out 1;*/
@@ -103,7 +103,7 @@ body, html {
     }
 }
 .navbar.light-effect{
-    background-color: orange;
+    background-color: #14a6f5;
 }
 .navbar.light-effect li a{
     color: white;
@@ -112,7 +112,7 @@ body, html {
     
 }
 .navbar.light-effect .colored-btn::after{
-    background-color: #252c36;
+    background-color: #325285;
 }
 
 
@@ -159,12 +159,13 @@ body, html {
     left: 10vw;
     animation: fadein 2s ease 0s 1 normal backwards running,shake 0.5s linear 0s infinite normal none running;
 }
+
 @keyframes shadow{
     0%{
-        text-shadow: 0px 0px 0px #ffdd00;
+        text-shadow: 0px 0px 0px white;
     }
     100%{
-        text-shadow: -10px -10px 0px #ffdd00;
+        text-shadow: -10px -10px 0px #0c35b0;
     }
 }
 @keyframes fadein{
@@ -232,8 +233,30 @@ body, html {
     box-shadow:0px -50px 120px 100px #252c36;
     font-family: 'Noto Sans TC', sans-serif;
     font-weight: 500;
+    text-align: center;
+}
+#intro1{
+    margin-top: 50px;
+    padding: 50px 0px;
+}
+#intro1-inner{
+    text-align: left;
+    display: inline-block;
+    width: 80%;
 }
 #intro1-title{
-    display: inline-block;
-    margin-left: 50px;
+}
+.effect.hidden{
+    visibility: hidden;
+}
+.bar{
+    height: 10px;
+    width: 100px;
+    background-color: white;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    transition: width .5s cubic-bezier(.15,.02,.24,1.82) .5s;
+}
+.bar.hidden{
+    width: 0px;
 }

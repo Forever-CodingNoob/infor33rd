@@ -41,12 +41,14 @@
         
         <div id="main">
             <div id="intro1">
-                <div id="intro1-title">
-                    Wo we are?
-                </div>
-                <div></div>
-                <div id="intro1-text">
-                    好笑ㄇ
+                <div id="intro1-inner">
+                    <div id="intro1-title" class="effect effect-typing effect-keep_underscore hidden" data-text="Who we are?">
+                        Who we are?
+                    </div>
+                    <div class="bar effect effect-nothing hidden"></div>
+                    <div id="intro1-text" class="effect effect-typing hidden" data-typeeffect-speed=10>
+                        我們建中資訊社有優良的教學制度與悠久的歷史，培育出多名IOI資訊國手，如楊承澔、林秉軒等，與極高的台大資工錄取率。與此同時，我們社團也有良好的跨年級關係：學弟你們出一張嘴就好，學長來做！<br>除了競賽外，我們的成員在機器學習、量子運算、網路爬蟲、物聯網、遊戲等方面也有豐碩的專題研究成果，如「俄羅斯方塊之基因演算法」、「全新棋類遊戲王政棋」等。並且，我們也會在上下學期期末時各舉行一次成果發表，絕對不會讓社員的心血埋沒在塵土之中。
+                    </div>
                 </div>
             </div>
             裡期然風方定當
@@ -68,12 +70,14 @@
 
 
         </div>
-        <button id="show" style="position: fixed; z-index: 10;">show</button><br>
-        <button id="show2" style="position: fixed; z-index: 10;">show</button><br>
-        <span style="position: fixed; background-color: white; z-index: 10">
-            <label for="spam">SPAM JELLIES</label>
-            <input type="checkbox" id="spam">
-        </span>
+        <div style="position: fixed; z-index: 10; top:50%">
+            <button id="show">show</button><br>
+            <button id="show2">show</button><br>
+            <span style="background-color: white;">
+                <label for="spam">SPAM JELLIES</label>
+                <input type="checkbox" id="spam">
+            </span>
+        </div>
         <script>
             var breakpoint = false;
             var mousePos=[0,0];//mousePos==[mouseX,mouseY]
@@ -97,6 +101,7 @@
             };
             $(window).on('scroll', function(){
                 update_mainbackgroundimg();
+                checkAppearEffectElem();
                 var main_div=$("#main");
                 if($(this).scrollTop()+$(this).height()>main_div.offset().top && breakpoint===false){
                     breakpoint='animating';
@@ -186,6 +191,73 @@
                     }
                 }
             }
+            function typingeffect(elem,keep_underscore){
+                console.log('fukc');
+                
+                if(typeof $(elem).attr('data-text')==='undefined'){
+                    $(elem).attr('data-text',$(elem).html().trim());
+                }
+                var text=$(elem).attr('data-text').trim();
+                var count=1;
+                var typeSpeed=(typeof $(elem).attr("data-typeeffect-speed")==='undefined')? 200:$(elem).attr("data-typeeffect-speed");
+                $(elem).html('_');
+                clearInterval($(elem).attr('data-intervalID-0'));
+                clearInterval($(elem).attr('data-intervalID-1'));
+                var id=setInterval(
+                    function(){
+                       if (count<=text.length){
+                           $(elem).html(text.slice(0,count++)+"_");
+                       }else{
+                           var currtext=$(elem).html().trim();
+                           
+                           //delete the '_' at the end of the text
+                           $(elem).html(currtext.slice(0,currtext.length-1));
+                           
+                           //make a routine
+                           if(keep_underscore){
+                               var addUnderscore=true;
+                               var id2=setInterval(
+                                   function(){
+                                       var currtext=$(elem).html().trim();
+                                       if(addUnderscore){
+                                           $(elem).html(currtext+"_");
+                                       }else{
+                                           $(elem).html(currtext.slice(0,currtext.length-1));
+                                       }
+                                       addUnderscore=!addUnderscore;
+                                   },
+                                   500
+                               );
+                               $(elem).attr('data-intervalID-1',id2);
+                           }
+                           
+                           //or just stop the interval
+                           clearInterval(id);
+                       }
+                    },
+                    1/typeSpeed*1000
+                );
+                $(elem).attr('data-intervalID-0',id);
+            }
+            
+            //add typing effct if needed
+            function checkAppearEffectElem(){
+                $('.effect').each(function(){
+                    if($(this).offset().top<=$(window).scrollTop()+$(window).height()){
+                        if($(this).hasClass('hidden')){
+                            $(this).removeClass('hidden');
+                            if($(this).hasClass('effect-typing')){
+                                typingeffect($(this),$(this).hasClass('effect-keep_underscore'));
+                            }
+                        }
+                    }else{
+                        $(this).addClass('hidden');
+                    }
+                });
+            }
+            $('#intro1-title').on('click',function(){
+                typingeffect($(this)); 
+            });
             function addJellyFish(certain_speed){
                 var size=150;
                 var image=new Image(size,size);
@@ -267,7 +339,7 @@
                 update_mainbackgroundimg();
                 $(window).trigger('resize');//trigger window's resize event so that the function which properly adjust sreen size will be triggered too
                 spam_jellies();
-            })
+            });
         </script>
 	</body>
 </html>
