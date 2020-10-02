@@ -140,7 +140,7 @@
             function autoScrollDown(upper_line,lower_line,lowerTargetSec){
                 console.log('autoScrollDown'+"\n"+upper_line+"\n"+lower_line+"\n"+lowerTargetSec);
                 //判斷過屆下線要微調，不然會太靈敏
-                if($(this).scrollTop()+$(this).height()>upper_line+0 && !autoscrolling){
+                if($(this).scrollTop()+$(this).height()>upper_line+10 && !autoscrolling){
                     //alert($(this).scrollTop()+$(this).height()+" "+(upper_line+100));
                     autoscrolling=true;
                     var hash="main";
@@ -177,7 +177,7 @@
             function autoScrollUp(upper_elem_top,upper_line,lower_line,upperTargetSec){
                 console.log('autoScrollUp'+"\n"+upper_elem_top+"\n"+upper_line+"\n"+lower_line+"\n"+upperTargetSec);
                 //判斷過屆上線要微調，不然會太靈敏
-                if($(this).scrollTop()<lower_line-0 && !autoscrolling){
+                if($(this).scrollTop()<lower_line-10 && !autoscrolling){
                     autoscrolling=true;
                     
                     $('html , body').animate(
