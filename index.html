@@ -42,8 +42,8 @@
         <div id="main">
             <div id="intro0" class="intro">
                 <div id="intro0-inner" class="intro-inner">
-                    <div id="intro0-title" class="intro-title effect effect-typing effect-keep_underscore hidden" data-text="Who we are?">
-                        Who we are?
+                    <div id="intro0-title" class="intro-title effect effect-typing effect-keep_underscore hidden" data-text="Who are we?">
+                        Who are we?
                     </div>
                     <div class="bar effect effect-nothing hidden"></div>
                     <div id="intro0-text" class="intro-text effect effect-typing hidden" data-typeeffect-speed=10>
@@ -53,13 +53,14 @@
             </div>
             <div id="intro1" class="intro">
                 <div id="intro1-inner" class="intro-inner">
-                    <div id="intro1-title" class="intro-title effect effect-typing effect-keep_underscore hidden" data-text="Who we are?">
-                        Who we are?
+                    <div id="intro1-title" class="intro-title effect effect-typing effect-keep_underscore hidden" data-text="Each of us">
+                        Each of us
                     </div>
                     <div class="bar effect effect-nothing hidden"></div>
                     <div id="intro1-text" class="intro-text effect effect-typing hidden" data-typeeffect-speed=10>
-                        我們建中資訊社有優良的教學制度與悠久的歷史，培育出多名IOI資訊國手，如楊承澔、林秉軒等，與極高的台大資工錄取率。與此同時，我們社團也有良好的跨年級關係：學弟你們出一張嘴就好，學長來做！<br>除了競賽外，我們的成員在機器學習、量子運算、網路爬蟲、物聯網、遊戲等方面也有豐碩的專題研究成果，如「俄羅斯方塊之基因演算法」、「全新棋類遊戲王政棋」等。並且，我們也會在上下學期期末時各舉行一次成果發表，絕對不會讓社員的心血埋沒在塵土之中。
+                        都是大電神，除ㄌ我qq
                     </div>
+                    <img src="img/img1.JPG" id="img1" class="effect hidden">
                 </div>
             </div>
             裡期然風方定當
@@ -178,7 +179,7 @@
                 console.log('autoScrollUp'+"\n"+upper_elem_top+"\n"+upper_line+"\n"+lower_line+"\n"+upperTargetSec);
                 //判斷過屆上線要微調，不然會太靈敏
                 if($(this).scrollTop()<lower_line-10 && !autoscrolling){
-                    alert($(this).scrollTop()+" "+lower_line);
+                    //alert($(this).scrollTop()+" "+lower_line);
                     autoscrolling=true;
                     
                     $('html , body').animate(

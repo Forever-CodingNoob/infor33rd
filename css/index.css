@@ -236,6 +236,7 @@ body, html {
     text-align: center;
 }
 .intro{
+    position: relative;
     margin-top: 200px;
     padding-top: 100px;
     height: 100vh;
@@ -260,4 +261,17 @@ body, html {
 }
 .bar.hidden{
     width: 0px;
+}
+#img1{
+    width: 500px;
+    height: auto;
+    position: absolute;
+    display: inline-block;
+    left: 50%;
+    top: 30%;
+    transition: all 1s cubic-bezier(.15,.02,.24,1.82) .1s;
+}
+#img1.hidden{
+    transform: translateY(100px);
+    opacity: 0;
 }
