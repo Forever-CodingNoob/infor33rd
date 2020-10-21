@@ -221,6 +221,7 @@ body, html {
     /*background-position: 50% 0px;*/
     background-repeat: no-repeat;
     background-size: cover;
+    /*filter: blur(2px);*/
     
 }
 #main{
@@ -265,6 +266,8 @@ body, html {
 #img1{
     width: 500px;
     height: auto;
+    box-shadow: 10px 10px 20px 10px;
+    border-radius: 5%;
     position: absolute;
     display: inline-block;
     left: 50%;

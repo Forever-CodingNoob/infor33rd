@@ -60,7 +60,7 @@
                     <div id="intro1-text" class="intro-text effect effect-typing hidden" data-typeeffect-speed=10>
                         都是大電神，除ㄌ我qq
                     </div>
-                    <img src="img/img1.JPG" id="img1" class="effect hidden">
+                    <img src="img/img1.JPG" id="img1" class="effect effect-dodging hidden" data-mouse_interact_radius=200 data-movement_radius=300>
                 </div>
             </div>
             裡期然風方定當
@@ -87,6 +87,7 @@
             <button id="show2">show</button><br>
             <button id="show3">show</button><br>
             <button id="show4">show</button><br>
+            <button id="show5">show</button><br>
             <span style="background-color: white;">
                 <label for="spam">SPAM JELLIES</label>
                 <input type="checkbox" id="spam">
@@ -315,16 +316,91 @@
                             $(this).removeClass('hidden');
                             if($(this).hasClass('effect-typing')){
                                 typingeffect($(this),$(this).hasClass('effect-keep_underscore'));
+                            }else if($(this).hasClass('effect-dodging')){
+                                setTimeout($.proxy(function(){dodge($(this));},this),2000);
                             }
                         }
                     }else{
-                        $(this).addClass('hidden');
+                        if(!$(this).hasClass('hidden')){
+                            $(this).addClass('hidden');
+                            if($(this).hasClass('effect-dodging')){
+                                dont_dodge($(this));
+                            }
+                            
+                        }
                     }
                 });
             }
-            $('#intro0-title').on('click',function(){
+            /*$('#intro0-title').on('click',function(){
                 typingeffect($(this)); 
-            });
+            });*/
+            function dodge(elem){
+                $(elem).css('transition-property','none');
+                
+                //make element interact with mouse pointer
+                const pos=$(elem).offset();
+                const max_force=100;
+                const mouse_max_force=75;
+                var v=[0,0];
+                $(elem).data('center',[pos.left+$(elem).width()/2,pos.top+$(elem).height()/2]);
+                $(elem).data('radius',$(elem).attr('data-movement_radius'));
+                $(elem).data('mouse_radius',$(elem).attr('data-mouse_interact_radius'));
+                $(elem).data('oritop',$(elem).css('top'));
+                $(elem).data('orileft',$(elem).css('left'));
+                
+                //start loop and return its id
+                let id= setInterval(function(){
+                    const size=[$(elem).width(),$(elem).height()];
+                    let center=$(elem).data('center');
+                    const elem_pos=$(elem).offset();
+                    const pos=[elem_pos.left+size[0]/2,elem_pos.top+size[1]/2];
+                    let radius=$(elem).data('radius');
+                    //alert(pos);
+                    
+                    let to_center=[center[0]-pos[0],center[1]-pos[1]];
+                    let dist=Math.sqrt(to_center[0]**2+to_center[1]**2);
+                    let force_mag=Math.min((dist**2/radius**2)*max_force,max_force);
+                    let mag=0;
+                    if(dist!==0){
+                        mag=Math.sqrt(force_mag/dist);
+                    }
+                    let force=[to_center[0]*mag,to_center[1]*mag];
+                    
+                    let mouse_pos=[mousePos[0]+$(window).scrollLeft(),mousePos[1]+$(window).scrollTop()];
+                    let mouse_to_elem=[pos[0]-mouse_pos[0],pos[1]-mouse_pos[1]];
+                    let mouse_dist=Math.sqrt(mouse_to_elem[0]**2+mouse_to_elem[1]**2);
+                    let mouse_radius=$(elem).data('mouse_radius');
+                    let mouse_force_mag=(mouse_dist<=mouse_radius)?(Math.min(((radius-mouse_dist)**5/radius**5)*mouse_max_force,mouse_max_force)):(0);
+                    let mouse_mag=Math.sqrt(mouse_force_mag/mouse_dist);
+                    let mouse_force=[mouse_to_elem[0]*mouse_mag,mouse_to_elem[1]*mouse_mag];
+                    
+                    
+                    
+                    v=[v[0]+force[0]+mouse_force[0],v[1]+force[1]+mouse_force[1]];
+                    
+                    
+                   $(elem).css('top','calc('+$(elem).data('oritop')+' + '+(v[1]-size[1]/2)+'px)');
+                    $(elem).css('left','calc('+$(elem).data('orileft')+' + '+(v[0]-size[0]/2)+'px)');
+                    //console.log(pos+"\n"+center+"\n"+force+"\n"+to_center+"\n"+mag+"\n"+dist+"\n"+v+"\n"+force_mag+"\n\n"+mouse_pos+mouse_force+"\n"+mouse_to_elem+"\n"+mouse_mag+"\n"+mouse_dist+"\n"+mouse_force_mag);
+                    //console.log(v[1]-$(elem).height()/2);
+                    
+                },100);
+                
+                $(elem).data('interval_id',id);
+                
+                
+            }
+            function dont_dodge(elem){
+                $(elem).css({'transition-property':'','top':'','left':''});
+                clearInterval($(elem).data('interval_id'));
+            }
+            
+            
+            
+            
+            
+            
+            
             function addJellyFish(certain_speed){
                 var size=150;
                 var image=new Image(size,size);
@@ -406,6 +482,7 @@
                 update_mainbackgroundimg();
                 $(window).trigger('resize');//trigger window's resize event so that the function which properly adjust sreen size will be triggered too
                 spam_jellies();
+                $('#show5').on('click',function(){dodge($('#img1'));});
             });
         </script>
 	</body>
