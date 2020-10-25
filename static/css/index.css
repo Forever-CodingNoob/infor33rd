@@ -1,0 +1,24 @@
+#main-img{
+    background-image: url("../img/IMG_5134.JPG");
+}
+#intro0{
+    height:150vh;
+}
+#intro1-text{
+    width: 50%;
+}
+#img1{
+    width: 500px;
+    height: auto;
+    box-shadow: 10px 10px 20px 10px;
+    border-radius: 5%;
+    position: absolute;
+    display: inline-block;
+    left: 55%;
+    top: 30%;
+    transition: all 1s cubic-bezier(.15,.02,.24,1.82) .1s;
+}
+#img1.hidden{
+    transform: translateY(100px);
+    opacity: 0;
+}

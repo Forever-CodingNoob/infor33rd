@@ -2,8 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="388dcdc8-67c5-4845-9687-6ce6ea9d447d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/runapp.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/css/base.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/index(replication).html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/font/menlo.woff" beforeDir="false" afterPath="$PROJECT_DIR$/static/font/menlo.woff" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/font/minecraft.woff" beforeDir="false" afterPath="$PROJECT_DIR$/static/font/minecraft.woff" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/IMG_5134.JPG" beforeDir="false" afterPath="$PROJECT_DIR$/static/img/IMG_5134.JPG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/img1.JPG" beforeDir="false" afterPath="$PROJECT_DIR$/static/img/img1.JPG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/jelly.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/img/jelly.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/jelly_old.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/img/jelly_old.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,6 +29,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -34,8 +50,38 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\LIN JHIH JHONG\Desktop\SCHOOL\高中\INFOR\社網\static" />
+      <recent name="C:\Users\LIN JHIH JHONG\Desktop\SCHOOL\高中\INFOR\社網\templates" />
       <recent name="C:\Users\LIN JHIH JHONG\Desktop\SCHOOL\高中\INFOR\社網\css" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="runapp" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="社網" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/runapp.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.runapp" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -63,14 +109,30 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="421" y="82" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1599364053815" />
+    <state width="963" height="163" key="GridCell.Tab.0.bottom" timestamp="1603596845016">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="963" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1603596845016" />
+    <state width="963" height="163" key="GridCell.Tab.0.center" timestamp="1603596845016">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="963" height="163" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1603596845016" />
+    <state width="963" height="163" key="GridCell.Tab.0.left" timestamp="1603596845016">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="963" height="163" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1603596845016" />
+    <state width="963" height="163" key="GridCell.Tab.0.right" timestamp="1603596845016">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="963" height="163" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1603596845016" />
     <state x="142" y="0" key="SettingsEditor" timestamp="1599373080223">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1599373080223" />
-    <state x="326" y="165" key="com.intellij.ide.util.TipDialog" timestamp="1600523036035">
+    <state x="326" y="165" key="com.intellij.ide.util.TipDialog" timestamp="1603545999424">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="326" y="165" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1600523036035" />
+    <state x="326" y="165" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1603545999424" />
     <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1599363920922">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
