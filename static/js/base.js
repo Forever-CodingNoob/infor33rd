@@ -2,22 +2,13 @@ var autoscrolling=false;
 var currentSec='cover';
 var mousePos=[0,0];//mousePos==[mouseX,mouseY]
 
-$('.colored-btn a').hover(
-    function(){
-        $(this).parent().addClass('running'); 
-    },
-    function(){
-        $(this).parent().removeClass('running');
-    }
-);
-
-var scroll_velocity = 0.2;
 var main_img_move_up_inPercentage=50;
 function update_mainbackgroundimg(){ 
+    var scroll_velocity = $('#main-img').css('--scroll_velocity');
     var pos = $(window).scrollTop(); 
     // subtract some from the height b/c of the padding
     $('#main-img').css('backgroundPosition', '50% calc(' + Math.round(-pos * scroll_velocity) +  'px +  '+main_img_move_up_inPercentage+"%)"); 
-    $("#show").text($('#main-img').height()+"  "+$(window).scrollTop()+"  "+$('#main').offset().top);
+    $("#show").text($('#main-img').height()+"  "+$(window).scrollTop());
 };
 $(window).on('scroll', function(){
     update_mainbackgroundimg();
@@ -26,7 +17,10 @@ $(window).on('scroll', function(){
     $('#show3').text('autoscrolling:'+autoscrolling.toString());
 
     if(currentSec=='cover'){
-        autoScrollDown($('#main').offset().top,$('#intro0').offset().top,0);
+        //若存在#intro0則檢查是否需要自動向下滾
+        if(typeof $('#intro0').val()!=='undefined'){
+            autoScrollDown($('#main').offset().top,$('#intro0').offset().top,0);
+        }
     }else if(currentSec==0){
         var self=$('#intro'+currentSec);
         var lower=$('#intro'+(currentSec+1));
@@ -118,7 +112,7 @@ function autoScrollUp(upper_elem_top,upper_line,lower_line,upperTargetSec){
 
 $(window).on('resize',function(){
     var main_img= $('#main-img');
-    if(typeof main_img==='undefined'){
+    if(typeof main_img.val()==='undefined'){
         return;
     }
 
@@ -227,7 +221,7 @@ function checkAppearEffectElem(){
                 if($(this).hasClass('effect-typing')){
                     typingeffect($(this),$(this).hasClass('effect-keep_underscore'));
                 }else if($(this).hasClass('effect-dodging')){
-                    setTimeout($.proxy(function(){dodge($(this));},this),2000);
+                    setTimeout($.proxy(function(){dodge($(this));},this),1100);
                 }
             }
         }else{
@@ -377,11 +371,7 @@ function crazily_spam_jellies(){
         setTimeout(crazily_spam_jellies,rand_millisec);
     }
 }
-$("#spam").on('change',function(){
-    if($(this).prop('checked')){
-        crazily_spam_jellies();
-    }
-});
+
 function remove(elem){
     elem.parentNode.removeChild(elem);
 }
@@ -393,8 +383,27 @@ function randfloat(start,end){
 }
 
 $(document).ready(function(){
+    $('.colored-btn a').hover(
+        function(){
+            //alert('hovered!');
+            $(this).parent().addClass('running'); 
+        },
+        function(){
+            //alert('hovered!');
+            $(this).parent().removeClass('running');
+        }
+    );
+    $("#spam").on('change',function(){
+        if($(this).prop('checked')){
+            crazily_spam_jellies();
+        }
+    });
+    
+    
+    //該做正事ㄌ
     update_mainbackgroundimg();
-    $(window).trigger('resize');//trigger window's resize event so that the function which properly adjust screen size will be triggered too
+    $(window).resize();//trigger window's resize event so that the function which properly adjust screen size will be triggered too
+    $(window).trigger('scroll');
     spam_jellies();
     $('#show5').on('click',function(){dodge($('#img1'));});
 });

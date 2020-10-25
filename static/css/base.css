@@ -131,18 +131,18 @@ body, html {
     height: 100%;
     z-index: 2;
 }
-.title{
+#cover .title{
     left: 20%;
     top: 40%;
     position: absolute;
     display: inline-block;
     float: left;
 }
-.title > *{
+#cover .title > *{
     position: relative;
     
 }
-.title > .maintitle{
+#cover .title > .maintitle{
     font-family:"menlo", monospace;
     color: #FFFFFF;
     font-size: 7em;
@@ -151,7 +151,7 @@ body, html {
     animation-fill-mode: both;
     
 }
-.title > .subtitle{
+#cover .title > .subtitle{
     font-family:"Noto Sans TC", monospace;
     font-weight: 700;
     color: #FFFFFF;
@@ -210,6 +210,7 @@ body, html {
 
 
 #main-img{
+    --scroll_velocity: 0.2;
     position: absolute;
     top: 0;
     left: 0;
