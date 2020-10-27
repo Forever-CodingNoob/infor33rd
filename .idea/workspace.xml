@@ -2,20 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="388dcdc8-67c5-4845-9687-6ce6ea9d447d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/static/css/about_us.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/bg1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/us/foreverdodo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/us/swear.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/about_us.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/base(duplicate).html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/index(duplicate).html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/us/darrell.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/us/社長.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/us/陳庭宇.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/us/陳杰揚.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/js/.eslintrc.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/js/about_us.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/about_us.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/about_us.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/css/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/base.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/js/base.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/base.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base(replication).html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/about_us.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/about_us.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/index(replication).html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,30 +106,30 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="421" y="82" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1599364053815" />
-    <state width="963" height="163" key="GridCell.Tab.0.bottom" timestamp="1603640567317">
+    <state width="962" height="163" key="GridCell.Tab.0.bottom" timestamp="1603816309244">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="963" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1603640567317" />
-    <state width="963" height="163" key="GridCell.Tab.0.center" timestamp="1603640567317">
+    <state width="962" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1603816309244" />
+    <state width="962" height="163" key="GridCell.Tab.0.center" timestamp="1603816309244">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="963" height="163" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1603640567317" />
-    <state width="963" height="163" key="GridCell.Tab.0.left" timestamp="1603640567317">
+    <state width="962" height="163" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1603816309244" />
+    <state width="962" height="163" key="GridCell.Tab.0.left" timestamp="1603816309244">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="963" height="163" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1603640567317" />
-    <state width="963" height="163" key="GridCell.Tab.0.right" timestamp="1603640567317">
+    <state width="962" height="163" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1603816309244" />
+    <state width="962" height="163" key="GridCell.Tab.0.right" timestamp="1603816309244">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="963" height="163" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1603640567317" />
+    <state width="962" height="163" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1603816309244" />
     <state x="142" y="0" key="SettingsEditor" timestamp="1599373080223">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1599373080223" />
-    <state x="326" y="165" key="com.intellij.ide.util.TipDialog" timestamp="1603545999424">
+    <state x="326" y="165" key="com.intellij.ide.util.TipDialog" timestamp="1603806814715">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="326" y="165" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1603545999424" />
+    <state x="326" y="165" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1603806814715" />
     <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1599363920922">
       <screen x="0" y="0" width="1280" height="680" />
     </state>

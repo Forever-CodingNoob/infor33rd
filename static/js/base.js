@@ -258,6 +258,9 @@ function dodge(elem){
     //alert($(elem).css('top'));
     //start loop and return its id
     let id= setInterval(function(){
+        if($(elem).hasClass('effect-dodging-stop')){
+            return;
+        }
         const size=[$(elem).width(),$(elem).height()];
         let center=$(elem).data('center');
         const elem_pos=$(elem).offset();
@@ -404,6 +407,14 @@ $(document).ready(function(){
     update_mainbackgroundimg();
     $(window).resize();//trigger window's resize event so that the function which properly adjust screen size will be triggered too
     $(window).trigger('scroll');
-    spam_jellies();
-    $('#show5').on('click',function(){dodge($('#img1'));});
+    
+    //execute once the entire page (DOM as well as images or iframes) is ready.
+    window.onload = function(){
+        setTimeout(function(){
+            
+            $('#loading').addClass('hidden');
+            spam_jellies();
+        
+        },1000);
+    };
 });

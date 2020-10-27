@@ -12,6 +12,9 @@
         <title>{% block title %}{% endblock %}</title>
 	</head>
 	<body>
+        <div id="loading">
+            <span>Loading...</span>
+        </div>
 		<nav class="navbar" id="main-nav">
 			<ul>
                 <li class="colored-btn green">
@@ -29,13 +32,15 @@
                 <li class="colored-btn orange">
                     <a href="#izcc">Friends</a>
                 </li>
+                <li class="colored-btn orange">
+                    <a href="#github">github repo</a>
+                </li>
 			</ul>
             <div id="jellies"></div>
 		</nav>
         
         
         {% block main %}{% endblock %}
-        
         
         <div style="position: fixed; z-index: 10; top:50%">
             <button id="show">show</button><br>
