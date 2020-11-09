@@ -1,6 +1,16 @@
+//'use strict';
 var autoscrolling=false;
 var currentSec='cover';
 var mousePos=[0,0];//mousePos==[mouseX,mouseY]
+
+function setCurrentSec(str){
+    if(str===null){
+        currentSec = 'cover';
+        return;
+    }
+    currentSec = str;
+    $('#show4').text('currentSec: '+currentSec);
+}
 
 var main_img_move_up_inPercentage=50;
 function update_mainbackgroundimg(){ 
@@ -9,7 +19,7 @@ function update_mainbackgroundimg(){
     // subtract some from the height b/c of the padding
     $('#main-img').css('backgroundPosition', '50% calc(' + Math.round(-pos * scroll_velocity) +  'px +  '+main_img_move_up_inPercentage+"%)"); 
     $("#show").text($('#main-img').height()+"  "+$(window).scrollTop());
-};
+}
 $(window).on('scroll', function(){
     update_mainbackgroundimg();
     checkAppearEffectElem();
@@ -38,13 +48,13 @@ $(window).on('scroll', function(){
     }
 });
 function autoScrollDown(upper_line,lower_line,lowerTargetSec){
-    console.log('autoScrollDown'+"\n"+upper_line+"\n"+lower_line+"\n"+lowerTargetSec);
+    console.log('autoScrollDown'+"\n"+upper_line+"\n"+lower_line+"\n"+lowerTargetSec+"\n"+$(window).scrollTop()+$(window).height());
     //判斷過屆下線要微調，不然會太靈敏
-    if($(this).scrollTop()+$(this).height()>upper_line+10 && !autoscrolling){
-        //alert($(this).scrollTop()+$(this).height()+" "+(upper_line+100));
+    if($(window).scrollTop()+$(window).height()>upper_line+10 && !autoscrolling){
+        //alert($(window).scrollTop()+$(window).height()+" "+(upper_line+100));
         autoscrolling=true;
         var hash="main";
-
+        
         $('html , body').animate(
             {
                 scrollTop: lower_line
@@ -55,7 +65,7 @@ function autoScrollDown(upper_line,lower_line,lowerTargetSec){
                 autoscrolling=false;
                 if(lowerTargetSec==0){
                     //alert('under break point!');
-                    currentSec=0;
+                    setCurrentSec(0);
 
                     //it will automatically scroll the page: window.location.hash=hash;
                     //use this instead
@@ -64,9 +74,8 @@ function autoScrollDown(upper_line,lower_line,lowerTargetSec){
                     $('#main-nav').addClass('hidden light-effect');
                     showNavbarWhenNeeded();
                 }else{
-                    currentSec=lowerTargetSec;
+                    setCurrentSec(lowerTargetSec);
                 }
-                $('#show4').text('currentSec: '+currentSec);
                 $('#show3').text('autoscrolling:'+autoscrolling.toString());
             }
 
@@ -77,8 +86,8 @@ function autoScrollDown(upper_line,lower_line,lowerTargetSec){
 function autoScrollUp(upper_elem_top,upper_line,lower_line,upperTargetSec){
     console.log('autoScrollUp'+"\n"+upper_elem_top+"\n"+upper_line+"\n"+lower_line+"\n"+upperTargetSec);
     //判斷過屆上線要微調，不然會太靈敏
-    if($(this).scrollTop()<lower_line-10 && !autoscrolling){
-        //alert($(this).scrollTop()+" "+lower_line);
+    if($(window).scrollTop()<lower_line-10 && !autoscrolling){
+        //alert($(window).scrollTop()+" "+lower_line);
         autoscrolling=true;
 
         $('html , body').animate(
@@ -91,7 +100,7 @@ function autoScrollUp(upper_elem_top,upper_line,lower_line,upperTargetSec){
                 autoscrolling=false;
                 if(upperTargetSec=='cover'){
                     //alert('above break point!');
-                    currentSec='cover';
+                    setCurrentSec(null);
 
                     //it will automatically scroll the page: window.location.hash="";
                     //use this instead
@@ -99,9 +108,8 @@ function autoScrollUp(upper_elem_top,upper_line,lower_line,upperTargetSec){
 
                     $('#main-nav').removeClass('hidden light-effect');
                 }else{
-                    currentSec=upperTargetSec;
+                    setCurrentSec(upperTargetSec);
                 }
-                $('#show4').text('currentSec: '+currentSec);
                 $('#show3').text('autoscrolling:'+autoscrolling.toString());
             }
 
@@ -153,8 +161,8 @@ $(document).on('mousemove', function(event){
     $('#show2').text("mouse position: "+mousePos[0]+" "+mousePos[1]);
     showNavbarWhenNeeded();
 });
-function showNavbarWhenNeeded(){
-    if(currentSec!='cover'){
+function showNavbarWhenNeeded(forceToDetect){
+    if(currentSec!='cover' || forceToDetect===true){
         if(mousePos[1]<=25){
             $('#main-nav').removeClass('hidden');
         }else if(mousePos[1]>$('.navbar').height()){
@@ -418,3 +426,5 @@ $(document).ready(function(){
         },1000);
     };
 });
+
+export {currentSec, mousePos, setCurrentSec, showNavbarWhenNeeded};

@@ -1,12 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap');
-#main-img{
-    background-image: url("../img/bg1.jpg");
-    height: 100%;
-    width: 100%;
-    --least-height:150%;
-    --max-height:100%;
-    --scroll_velocity: 0.1;
-}
 #us-main{
     position: absolute;
     top: 0;
@@ -15,10 +7,22 @@
     height: 150vh;
     z-index: 0;
 }
+#main-img{
+    background-image: url("../img/bg1.jpg");
+    height: 100%;
+    width: 100%;
+    --least-height:150%;
+    --max-height:100%;
+    --scroll_velocity: 0.1;
+}
 #us-inner{
     padding-top:100px;
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
+    align-content: space-around;
 }
 #us-inner > span{
     display: inline-block;
@@ -42,7 +46,9 @@
     background-repeat: no-repeat;
     background-size: cover;
     /*filter: blur(2px);*/
-    transition: transform 0.5s ease-in-out 0s;
+    transition: transform 0.3s ease-out 0s;
+    transform-style: preserve-3d;
+    cursor: pointer;
     z-index: 2;
 }
 #us-inner > span .img.effect-dodging-stop{
@@ -63,10 +69,38 @@
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    z-index: 1;
-    transition: transform 0.5s ease-in-out 0s;
+    transition: transform 0.3s ease-out 0s;
     transform: translateZ(-1px);
+    z-index: 1;
 }
 #us-inner > span .img.effect-dodging-stop::after{
     transform: scale(1.2,1.2) translateZ(-1px);
+}
+.flex-break{
+    flex-basis: 100%;
+    height: 0;
+}
+
+#us-inner > span .details{
+    background-color: darkslategray;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+    z-index: 100;
+}
+#us-inner > span .details.hidden{
+    display: none;
+}
+
+#us-inner > span .details-inner{
+    position: relative;
+    display: inline-block;
+    margin-top: 5vh;
+    width: 70%;
+    height: calc(100vh - 5vh - 5vh);/* all - topMargin - bottomSpace */
+    background-color: coral;
+    z-index: 120;
 }

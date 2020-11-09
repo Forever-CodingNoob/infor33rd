@@ -1,6 +1,7 @@
 from flask import Flask,render_template
 import os
-
+# print(os.getcwd())
+# print(__file__)
 app=Flask(__name__,
           template_folder=os.path.join(os.path.abspath(os.getcwd()),'templates'),
           static_url_path="",
