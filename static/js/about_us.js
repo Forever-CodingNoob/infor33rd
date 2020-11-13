@@ -1,5 +1,20 @@
-import {currentSec, setCurrentSec, showNavbarWhenNeeded} from './base.js';
+import {currentSec, setCurrentSec, showNavbarWhenNeeded, enableNavbar, disableNavbar} from './base.js';
 var currentPerson=null;
+
+var scrollLockPos=[0,0];
+function lockScroll(e){
+    $(window).scrollLeft(scrollLockPos[0]);
+    $(window).scrollTop(scrollLockPos[1]);
+}
+function disableScrolling(){
+    scrollLockPos[1]=$(window).scrollTop();
+    scrollLockPos[0]=$(window).scrollLeft();
+    window.addEventListener('scroll',lockScroll,{ passive: true });
+}
+function enableScrolling(){
+    window.removeEventListener('scroll',lockScroll,{ passive: true })
+}
+
 function open_intro(){
     
     //get name in url's hash without the hash symbol
@@ -14,23 +29,39 @@ function open_intro(){
             throw 'Cannot find any person named "'+name+'".';
         }
         $('#'+name).find('.details').first().removeClass('hidden');
+        disableScrolling();
+        disableNavbar(false);
         currentPerson = name;
     }catch(e){//person doesn't exist or there's no hash at all
         console.log('cannot find person!');
         $("#us-inner > span .details").addClass('hidden');
+        enableScrolling();
+        enableNavbar();
         currentPerson = null;
     }
 };
 $(document).on('mousemove', function(){
-   showNavbarWhenNeeded(currentPerson!==null);
+   if(currentPerson!==null){
+       showNavbarWhenNeeded(currentPerson!==null);
+   }
 });
+
+
+
+
 $(document).ready(function(){
-    $(window).on('scroll',function(e){
-        if(currentPerson===null){
-           e.stopPropagation();
+    /*disable scrolling
+    window.addEventListener('wheel mousewheel touchmove',function(e){
+        //alert(currentPerson);
+        if(currentPerson!==null){
+            //alert(currentPerson);
             e.preventDefault();
+            //e.stopPropagation();
+
         }
-    });
+    },{ passive: false });
+    */
+    disableScrolling();
     $("#us-inner > span .img").hover(
         function(){
             $(this).addClass('effect-dodging-stop');
@@ -42,6 +73,13 @@ $(document).ready(function(){
         let name=$(this).parents('span').first().find('div.name').text().trim();
         //alert(name);
         history.pushState(null,null,'#'+name);
+        open_intro();
+    });
+    $('#us-inner > span .details').on('click',function(e){
+        if(e.target!==this){
+            return;
+        }
+        history.pushState(null,null,'#');
         open_intro();
     });
     

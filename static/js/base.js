@@ -71,7 +71,7 @@ function autoScrollDown(upper_line,lower_line,lowerTargetSec){
                     //use this instead
                     history.pushState(null,null,'#'+hash);
 
-                    $('#main-nav').addClass('hidden light-effect');
+                    disableNavbar(true);
                     showNavbarWhenNeeded();
                 }else{
                     setCurrentSec(lowerTargetSec);
@@ -106,7 +106,7 @@ function autoScrollUp(upper_elem_top,upper_line,lower_line,upperTargetSec){
                     //use this instead
                     history.pushState(null,null,'#');
 
-                    $('#main-nav').removeClass('hidden light-effect');
+                    enableNavbar();
                 }else{
                     setCurrentSec(upperTargetSec);
                 }
@@ -161,7 +161,17 @@ $(document).on('mousemove', function(event){
     $('#show2').text("mouse position: "+mousePos[0]+" "+mousePos[1]);
     showNavbarWhenNeeded();
 });
+function enableNavbar(){
+    $('#main-nav').removeClass('hidden light-effect');
+}
+function disableNavbar(lightup=true){
+    $('#main-nav').addClass('hidden');
+    if(lightup){
+        $('#main-nav').addClass('light-effect');
+    }
+}
 function showNavbarWhenNeeded(forceToDetect){
+    //works only when currentSec is not 'cover'
     if(currentSec!='cover' || forceToDetect===true){
         if(mousePos[1]<=25){
             $('#main-nav').removeClass('hidden');
@@ -427,4 +437,4 @@ $(document).ready(function(){
     };
 });
 
-export {currentSec, mousePos, setCurrentSec, showNavbarWhenNeeded};
+export {currentSec, mousePos, setCurrentSec, showNavbarWhenNeeded, enableNavbar, disableNavbar};

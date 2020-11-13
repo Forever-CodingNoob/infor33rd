@@ -82,7 +82,7 @@
 }
 
 #us-inner > span .details{
-    background-color: darkslategray;
+    background-color: rgba(20, 33, 24, 0.8);
     position: fixed;
     top: 0;
     left: 0;
@@ -97,10 +97,87 @@
 
 #us-inner > span .details-inner{
     position: relative;
-    display: inline-block;
+    display: inline-flex;
+    flex-direction: column;
     margin-top: 5vh;
     width: 70%;
     height: calc(100vh - 5vh - 5vh);/* all - topMargin - bottomSpace */
-    background-color: coral;
+    background-color: rgba(84, 135, 235, 0);
+    /*overflow-y: scroll;*/
     z-index: 120;
+}
+#us-inner > span .details-inner .details-text{
+    position: relative;
+    display: inline-flex;
+    flex-grow: 1;
+    align-items: stretch;
+    width: 100%;
+    margin-top: 10%;
+    background-color: rgba(56, 125, 86, 1);
+    border-top-left-radius: 10%;
+    border-bottom-left-radius: 10%;
+    overflow: hidden;
+}
+#us-inner > span .details-inner .details-name{
+    position: absolute;
+    display: inline;
+    font-size: 3rem;
+    font-family: "Noto Sans TC",sans-serif;
+    text-shadow: -5px -5px 0px orangered;
+    color: lightgray;
+    font-weight: 900;
+    margin-top: 10%;
+    left: 20%;
+    transform: translateY(-50%);
+    z-index: 130;
+}
+#us-inner > span .details-inner .details-img{
+    position: absolute;
+    display: inline-block;
+    /*flex-grow: 0.5;*/
+    width: 20%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-attachment: scroll;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: width .5s ease-in-out 0s;
+    z-index: 125;
+}
+#us-inner > span .details-inner .details-img:hover{
+    /*flex-grow: 2;*/
+    width: 75%;
+}
+#us-inner > span .details-inner .details-intro{
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    height: 100%;
+    width: 80%;
+    margin-left: auto;
+    overflow-y: scroll;
+    /*flex-grow: 1;*/
+}
+#us-inner > span .details-inner .details-job{
+    position: relative;
+    margin: 3% auto;
+    background-color: black;
+    color: white;
+    display: inline-block;
+    padding: 1px 5px;
+    font-family: "Noto Sans TC",sans-serif;
+    font-weight: 500;
+    font-size: 2rem;
+    border-radius: 2rem;
+}
+#us-inner > span .details-inner .details-words{
+    position: relative;
+    display: block;
+    font-size: 1.25rem;
+    color: black;
+    font-family: "Noto Sans TC",sans-serif;
+    font-weight: 300;
+    width: 100%;
 }
