@@ -104,7 +104,7 @@
     height: calc(100vh - 5vh - 5vh);/* all - topMargin - bottomSpace */
     background-color: rgba(84, 135, 235, 0);
     /*overflow-y: scroll;*/
-    z-index: 120;
+    z-index: 90;
 }
 #us-inner > span .details-inner .details-text{
     position: relative;
@@ -117,6 +117,7 @@
     border-top-left-radius: 10%;
     border-bottom-left-radius: 10%;
     overflow: hidden;
+    z-index: 120;
 }
 #us-inner > span .details-inner .details-name{
     position: absolute;
