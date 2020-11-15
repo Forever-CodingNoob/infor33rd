@@ -8,112 +8,34 @@
     <div id="us-main">
         <div id="main-img"></div>
         <div id="us-inner">
-            <span id='廖翊廷'>
-                <div class="img-outer">
-                    <div class="img effect effect-dodging hidden" style="background-image: url('../img/us/社長.jpg')" data-mouse_interact_radius=200 data-movement_radius=300></div>
-                </div>
-                <div class="name">廖翊廷</div>
-                <div class="title">社長</div>
-                <div class="details hidden">
-                    <div class="details-inner">
-                        <div class="details-name">廖翊廷</div>
-                        <div class="details-text">
-                            <div class="details-img" style="background-image: url('../img/us/社長.jpg')"></div>
-                            <div class="details-intro">
-                                <span class="details-job">社長大人</span>
-                                <span class="details-words">
-                                    我是建中資訊社社長廖翊廷，時常聯絡不到人，通訊裝置長時間處於關機狀況<br>
-                                    處理社團事情的能力尚待加強<br>
-                                    學術力薄弱，會一點點的C跟Python，演算法能力尚待加強<br>
-                                    騎腳踏車跟打籃球為主要興趣<br>
-                                    不打音遊、不常看動漫、不聽油歌(想不到吧，主要接觸的是歐美文化<br>
-                                    不用綽號(綽號真的不好用...<br>
-                                    目前正學習增加藝術氣息...
-                                </span>
+            {% for i,person in enumerate(workers) %}
+                <span id='{{person.name}}'>
+                    <div class="img-outer">
+                        <div class="img effect effect-dodging hidden" style="background-image: url('../img/us/{{person.photo_filename}}')" data-mouse_interact_radius=200 data-movement_radius=300></div>
+                    </div>
+                    <div class="name">{{person.name}}</div>
+                    <div class="title">{{person.job}}</div>
+                    <div class="details hidden">
+                        <div class="details-inner">
+                            <div class="details-name">{{person.name}}</div>
+                            <div class="details-text">
+                                <div class="details-img" style="background-image: url('../img/us/{{person.photo_filename}}')"></div>
+                                <div class="details-intro">
+                                    <span class="details-job">{{person.job}}</span>
+                                    <span class="details-words">
+                                        {{person.intro |safe}}
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </span>
-            <span>
-                <div class="img-outer">
-                    <div class="img effect effect-dodging hidden" style="background-image: url('../img/us/swear.jpg')" data-mouse_interact_radius=200 data-movement_radius=300></div>
-                </div>
-                <div class="name">黃思維</div>
-                <div class="title">學術兼行政</div>
-            </span>
-            <span>
-                <div class="img-outer">
-                    <div class="img effect effect-dodging hidden" style="background-image: url('../img/us/量子小灰灰.jpg')" data-mouse_interact_radius=200 data-movement_radius=300></div>
-                </div>
-                <div class="name">蕭登鴻</div>
-                <div class="title">副社兼美宣</div>
-            </span>
-            <span>
-                <div class="img-outer">
-                    <div class="img effect effect-dodging hidden" style="background-image: url('../img/us/foreverdodo.png')" data-mouse_interact_radius=200 data-movement_radius=300></div>
-                </div>
-                <div class="name">林致中</div>
-                <div class="title">網管兼學術(渣)</div>
-            </span>
-            <span>
-                <div class="img-outer">
-                    <div class="img effect effect-dodging hidden" style="background-image: url('../img/us/darrell.jpg')" data-mouse_interact_radius=200 data-movement_radius=300></div>
-                </div>
-                <div class="name">游至捷</div>
-                <div class="title">行政兼外交</div>
-            </span>
-            <div class="flex-break"></div>
-            <span>
-                <div class="img-outer">
-                    <div class="img effect effect-dodging hidden" style="background-image: url('../img/us/陳杰揚.jpg')" data-mouse_interact_radius=200 data-movement_radius=300></div>
-                </div>
-                <div class="name">陳杰揚</div>
-                <div class="title">美宣</div>
-            </span>
-            <span>
-                <div class="img-outer">
-                    <div class="img effect effect-dodging hidden" style="background-image: url('../img/us/陳庭宇.jpg')" data-mouse_interact_radius=200 data-movement_radius=300></div>
-                </div>
-                <div class="name">陳庭宇</div>
-                <div class="title">行政兼外交</div>
-            </span>
-            <span>
-                <div class="img-outer">
-                    <div class="img effect effect-dodging hidden" style="background-image: url('../img/us/swear.jpg')" data-mouse_interact_radius=200 data-movement_radius=300></div>
-                </div>
-                <div class="name">黃思維</div>
-                <div class="title">學術兼行政</div>
-            </span>
-            <div class="flex-break"></div>
-            <span>
-                <div class="img-outer">
-                    <div class="img effect effect-dodging hidden" style="background-image: url('../img/us/swear.jpg')" data-mouse_interact_radius=200 data-movement_radius=300></div>
-                </div>
-                <div class="name">黃思維</div>
-                <div class="title">學術兼行政</div>
-            </span>
-            <span>
-                <div class="img-outer">
-                    <div class="img effect effect-dodging hidden" style="background-image: url('../img/us/swear.jpg')" data-mouse_interact_radius=200 data-movement_radius=300></div>
-                </div>
-                <div class="name">黃思維</div>
-                <div class="title">學術兼行政</div>
-            </span>
-            <span>
-                <div class="img-outer">
-                    <div class="img effect effect-dodging hidden" style="background-image: url('../img/us/swear.jpg')" data-mouse_interact_radius=200 data-movement_radius=300></div>
-                </div>
-                <div class="name">黃思維</div>
-                <div class="title">學術兼行政</div>
-            </span>
-            <span>
-                <div class="img-outer">
-                    <div class="img effect effect-dodging hidden" style="background-image: url('../img/us/swear.jpg')" data-mouse_interact_radius=200 data-movement_radius=300></div>
-                </div>
-                <div class="name">黃思維</div>
-                <div class="title">學術兼行政</div>
-            </span>
+                </span>
+            
+                {% if i in gaps %}
+                    <div class="flex-break"></div>
+                {% endif %}
+            
+            {% endfor %}
         </div>
     </div>
     

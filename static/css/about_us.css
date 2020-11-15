@@ -167,7 +167,7 @@
     background-color: black;
     color: white;
     display: inline-block;
-    padding: 1px 5px;
+    padding: 1px 10px;
     font-family: "Noto Sans TC",sans-serif;
     font-weight: 500;
     font-size: 2rem;
@@ -181,4 +181,5 @@
     font-family: "Noto Sans TC",sans-serif;
     font-weight: 300;
     width: 100%;
+    padding: 0 10%;
 }

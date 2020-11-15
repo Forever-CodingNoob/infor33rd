@@ -76,11 +76,12 @@ $(document).ready(function(){
         open_intro();
     });
     $('#us-inner > span .details').on('click',function(e){
-        if(e.target!==this){
-            return;
+        let target = $(e.target);
+        if(target.is($(this)) || target.is($(this).find('.details-inner').first())){
+            //按到空白區域(非name或text)
+            history.pushState(null,null,'#');
+            open_intro();
         }
-        history.pushState(null,null,'#');
-        open_intro();
     });
     
     window.onhashchange = open_intro;
