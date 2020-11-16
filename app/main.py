@@ -26,6 +26,9 @@ def about_us():
     people = Person.getAll()
     gaps = [4,7]
     return render_template('about_us.html',workers=people,gaps=gaps)
+@app.route('/0.9bar')
+def bar():
+    return render_template('howmuchis0point9bar.html')
 @app.route('/')
 def home():
     return render_template('index.html')

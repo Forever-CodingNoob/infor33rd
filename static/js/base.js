@@ -437,4 +437,4 @@ $(document).ready(function(){
     };
 });
 
-export {currentSec, mousePos, setCurrentSec, showNavbarWhenNeeded, enableNavbar, disableNavbar};
+export {currentSec, mousePos, setCurrentSec, showNavbarWhenNeeded, enableNavbar, disableNavbar,dodge,dont_dodge};

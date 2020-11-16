@@ -1,4 +1,4 @@
-import {currentSec, setCurrentSec, showNavbarWhenNeeded, enableNavbar, disableNavbar} from './base.js';
+import {currentSec, setCurrentSec, showNavbarWhenNeeded, enableNavbar, disableNavbar, dodge, dont_dodge} from './base.js';
 var currentPerson=null;
 
 var scrollLockPos=[0,0];
@@ -45,7 +45,11 @@ $(document).on('mousemove', function(){
        showNavbarWhenNeeded(currentPerson!==null);
    }
 });
-
+function allImgDodging(elem){
+    $("#us-inner > span .img").each(function(){
+        dodge($(this));
+    });
+}
 
 
 
@@ -62,6 +66,7 @@ $(document).ready(function(){
     },{ passive: false });
     */
     disableScrolling();
+    allImgDodging();
     $("#us-inner > span .img").hover(
         function(){
             $(this).addClass('effect-dodging-stop');
@@ -83,6 +88,8 @@ $(document).ready(function(){
             open_intro();
         }
     });
+    
+    
     
     window.onhashchange = open_intro;
     //window.onpopstate = open_intro;

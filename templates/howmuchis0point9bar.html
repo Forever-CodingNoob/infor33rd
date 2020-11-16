@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <title>0.9bar=?</title>
+        <style type="text/css">
+            *{
+                box-sizing: border-box;
+            }
+        </style>
+	</head>
+	<body>
+        <div style="font-size: 2rem; word-wrap: break-word;">0.9bar=<br>0.</div>
+	</body>
+    <script type="text/javascript">
+        $(window).on('touchmove scroll mousewheel wheel',fill);
+        function fill(){
+            var id=setInterval(function(){
+                if($('html').height()<=$(window).scrollTop()+($(window).height()*1.2)){
+                    var num=document.createElement('span');
+                    num.innerHTML='9'.repeat(999);
+                    $('div').first().append(num);
+                }else{
+                    clearInterval(id);
+                }
+            },1);
+        }
+        $(document).ready(fill);
+    </script>
+</html>

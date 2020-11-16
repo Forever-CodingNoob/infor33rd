@@ -11,7 +11,7 @@
             {% for i,person in enumerate(workers) %}
                 <span id='{{person.name}}'>
                     <div class="img-outer">
-                        <div class="img effect effect-dodging hidden" style="background-image: url('../img/us/{{person.photo_filename}}')" data-mouse_interact_radius=200 data-movement_radius=300></div>
+                        <div class="img" style="background-image: url('../img/us/{{person.photo_filename}}')" data-mouse_interact_radius=200 data-movement_radius=300></div>
                     </div>
                     <div class="name">{{person.name}}</div>
                     <div class="title">{{person.job}}</div>
