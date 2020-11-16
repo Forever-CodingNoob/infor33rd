@@ -29,21 +29,29 @@ body, html {
     width: 100vw;
     height: 100vh;
     text-align: center;
-    transition:top .5s ease-in-out 0s, opacity .5s linear 0s;
+    visibility: visible;
+    opacity: 1;
+    transition:opacity .5s linear 0s, visibility .5s linear 0s;
 }
 #loading span{
     color: deepskyblue;
     font-family: menlo,monospace;
     font-size: 3em;
     position: relative;
-    top: 50%;
+    top: 50vh;
+    transition:top .5s ease-in-out 0s;
 }
 #loading.hidden{
     opacity: 0;
+    visibility: hidden;
+}
+#loading.hidden span{
     top: 150vh;
 }
 .navbar{
     z-index: 5;
+    padding-top: 100px;
+    top: -100px;
     background-color: rgba(51,51,51,0.8);
     font-family:consolas, monospace;
     line-height: 60px;
@@ -110,8 +118,8 @@ body, html {
     
 
 }
+.colored-btn.orange::after{ background-color:rgba(255, 120, 40, 1);}
 .colored-btn.green::after{ background-color:rgba(0, 186, 50,1);}
-.colored-btn.orange::after{ background-color:rgba(255, 148, 66, 1);}
 .colored-btn.blue::after{ background-color:rgba(43, 156, 255, 1);}
 .colored-btn.running::after{
     transform: translateY(0%) rotate(315deg);
@@ -138,6 +146,10 @@ body, html {
     background-color: #325285;
 }
 
+#home-btn::after{ 
+    background-color:rgba(255, 120, 40, 1);
+}
+
 
 #jellies img{
     z-index: 8;
@@ -148,18 +160,20 @@ body, html {
 
 #cover{
     position: absolute;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
     top: 0;
     left:0;
     width: 100%;
     height: 100%;
     z-index: 2;
+    background-color: rgba(28, 28, 28, 0.1);
 }
 #cover .title{
-    left: 20%;
-    top: 40%;
-    position: absolute;
+    position: relative;
     display: inline-block;
-    float: left;
+    padding-top: 10%;
 }
 #cover .title > *{
     position: relative;
@@ -168,19 +182,30 @@ body, html {
 #cover .title > .maintitle{
     font-family:"menlo", monospace;
     color: #FFFFFF;
-    font-size: 7em;
+    font-size: 4em;
+    display: block;
     animation-name: fadein,shadow;
     animation-duration: 2s;
     animation-fill-mode: both;
     
 }
+body.before-loaded .title > .maintitle{
+    animation-name: none !important;
+}
 #cover .title > .subtitle{
     font-family:"Noto Sans TC", monospace;
-    font-weight: 700;
+    font-weight: 500;
     color: #FFFFFF;
-    font-size: 2.5em;
-    left: 10vw;
-    animation: fadein 2s ease 0s 1 normal backwards running,shake 0.5s linear 0s infinite normal none running;
+    display: block;
+    font-size: 2rem;
+    margin-left: 5vw;
+    animation: fadein 2s ease 0s 1 normal backwards running;
+}
+body.before-loaded #cover .title > .subtitle{
+    animation: none;
+}
+#cover .title > .subtitle.viral{
+    animation: shake 0.5s linear 0s infinite normal none running;
 }
 
 @keyframes shadow{
@@ -287,4 +312,10 @@ body, html {
 }
 .bar.hidden{
     width: 0px;
+}
+#test{
+    visibility: hidden;
+}
+#test.viral{
+    visibility: visible;
 }

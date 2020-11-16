@@ -11,28 +11,28 @@
         {% block header %}{% endblock %}
         <title>{% block title %}{% endblock %}</title>
 	</head>
-	<body>
+	<body class="before-loaded">
         <div id="loading">
             <span>Loading...</span>
         </div>
 		<nav class="navbar" id="main-nav">
 			<ul>
-                <li class="colored-btn green">
+                <li class="colored-btn" id="home-btn">
                     <a class="active" href="{{url_for('home')}}">Home</a>
                 </li>
-                <li class="colored-btn blue">
+                <li class="colored-btn green">
                     <a href="{{url_for('about_us')}}">About us</a>
                 </li>
-                <li class="colored-btn orange">
+                <li class="colored-btn green">
                     <a href="#amongus">Among us</a>
                 </li>
-                <li class="colored-btn orange">
+                <li class="colored-btn green">
                     <a href="#class">Classes</a>
                 </li>
-                <li class="colored-btn orange">
+                <li class="colored-btn green">
                     <a href="#izcc">Friends</a>
                 </li>
-                <li class="colored-btn orange">
+                <li class="colored-btn green">
                     <a href="https://github.com/Forever-CodingNoob/infor33rd">github repo</a>
                 </li>
 			</ul>
@@ -42,7 +42,7 @@
         
         {% block main %}{% endblock %}
         
-        <div style="position: fixed; z-index: 10; top:50%">
+        <div style="position: fixed; z-index: 10; top:50%" id="test">
             <button id="show">show</button><br>
             <button id="show2">show</button><br>
             <button id="show3">show</button><br>

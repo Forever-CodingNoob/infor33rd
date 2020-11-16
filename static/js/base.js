@@ -118,7 +118,7 @@ function autoScrollUp(upper_elem_top,upper_line,lower_line,upperTargetSec){
     }
 }
 
-$(window).on('resize',function(){
+function onresizeHandler(){
     var main_img= $('#main-img');
     if(typeof main_img.val()==='undefined'){
         return;
@@ -148,7 +148,8 @@ $(window).on('resize',function(){
         main_img.css('background-size','auto '+max_height);
         console.log('make height fit');
     }
-});
+}
+$(window).on('resize', onresizeHandler);
 
 
 function getMousePosition(event){
@@ -334,8 +335,9 @@ function addJellyFish(certain_speed){
     var size=150;
     var image=new Image(size,size);
     image.src="img/jelly.png";
-
-    var start_height=-(image.height-$("#main-nav").height())/2;
+    
+    let navbarPadding = $("#main-nav").innerHeight()-$("#main-nav").height();
+    var start_height=($("#main-nav").height()-image.height)/2 + navbarPadding;
     if(randint(0,1)){
         var direction='right';
         var start_posleft=-image.width;
@@ -423,7 +425,9 @@ $(document).ready(function(){
     
     //該做正事ㄌ
     update_mainbackgroundimg();
-    $(window).resize();//trigger window's resize event so that the function which properly adjust screen size will be triggered too
+    //$(window).resize();//trigger window's resize event so that the function which properly adjust screen size will be triggered too
+    onresizeHandler();
+    
     $(window).trigger('scroll');
     
     //execute once the entire page (DOM as well as images or iframes) is ready.
@@ -431,6 +435,7 @@ $(document).ready(function(){
         setTimeout(function(){
             
             $('#loading').addClass('hidden');
+            $('html,body').removeClass('before-loaded');
             spam_jellies();
         
         },1000);
