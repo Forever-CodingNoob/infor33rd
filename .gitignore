@@ -2,3 +2,4 @@
 app/__pycache__
 static/js/.eslintrc.json
 .env
+secret/
