@@ -43,6 +43,7 @@ jobs:
       run: |-
         gcloud run deploy "$CONTAINER_NAME" \
           --quiet \
+          --region "$RUN_REGION" \
           --image "gcr.io/$PROJECT_ID/$CONTAINER_NAME:$GITHUB_SHA" \
           --platform "managed" \
           --port 80 \
