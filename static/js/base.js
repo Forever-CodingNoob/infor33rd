@@ -417,6 +417,8 @@ function toggleGoViral(){
     }else{
         $('#test').addClass('viral');
     }
+    
+    $('.navbar li.bad').removeClass('bad');
 }
 
 function remove(elem){

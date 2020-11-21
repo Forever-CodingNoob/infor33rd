@@ -38,20 +38,32 @@ body, html {
 #loading span{
     color: deepskyblue;
     font-family: menlo,monospace;
-    font-size: 1.5em;
+    font-size: 1.5rem;
     position: relative;
     margin-top: 50vh;
+    top: 0;
     display: inline-block;
     transform: translateY(-50%);
     transition:top .5s ease-in-out 0s;
     cursor: not-allowed;
+}
+#loading p{
+    color: lightgray;
+    font-size: 1rem;
+    position: relative;
+    display: inline-block;
+    font-style: italic;
+    transition:transform .5s ease-in-out 0s;
 }
 #loading.hidden{
     opacity: 0;
     visibility: hidden;
 }
 #loading.hidden span{
-    top: 150vh;
+    top: 100vh;
+}
+#loading.hidden p{
+    transform: translateY(100vh);
 }
 .navbar{
     z-index: 5;
@@ -115,6 +127,11 @@ body.before-loaded .navbar{
     visibility: hidden;
     transform: translateY(60px);
 }
+.navbar li.bad{
+    display: none
+}
+
+
 .colored-btn{
     
 }
