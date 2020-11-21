@@ -2,6 +2,7 @@
 var autoscrolling=false;
 var currentSec='cover';
 var mousePos=[0,0];//mousePos==[mouseX,mouseY]
+var jellies_amount=0;
 
 function setCurrentSec(str){
     if(str===null){
@@ -181,6 +182,19 @@ function showNavbarWhenNeeded(forceToDetect){
         }
     }
 }
+function showNavbarOnLoaded(){
+    var time_delay=150;
+    $('.navbar li.hidden').each(function(index){
+        var li=this;
+        setTimeout(function(){$(li).removeClass('hidden')}, time_delay * (index+1));
+    });
+}
+
+
+
+
+
+
 function typingeffect(elem,keep_underscore){
     console.log('fukc');
 
@@ -363,6 +377,7 @@ function addJellyFish(certain_speed){
     }
     image.style.left=start_posleft+"px";
     $("#jellies").prepend(image);
+    jellies_amount++;
     var id=setInterval(
         function(){
             var left=image.offsetLeft;
@@ -376,6 +391,7 @@ function addJellyFish(certain_speed){
             if (left>=$(window).width() || left<=-image.width){
                 remove(image);
                 clearInterval(id);
+                jellies_amount--;
             }
         },
         50
@@ -383,7 +399,7 @@ function addJellyFish(certain_speed){
 
 }
 function spam_jellies(interval){
-    addJellyFish();
+    if(jellies_amount<=20){ addJellyFish(); }
     var rand_millisec=(typeof interval==='undefined')?randint(3000,5000):interval;
     setTimeout(spam_jellies,rand_millisec);
 }
@@ -392,6 +408,14 @@ function crazily_spam_jellies(){
     var rand_millisec=100;
     if($("#spam").prop('checked')){
         setTimeout(crazily_spam_jellies,rand_millisec);
+    }
+}
+function toggleGoViral(){
+    let testBar=$('#test');
+    if(testBar.hasClass('viral')){
+        $('#test').removeClass('viral');
+    }else{
+        $('#test').addClass('viral');
     }
 }
 
@@ -421,6 +445,7 @@ $(document).ready(function(){
             crazily_spam_jellies();
         }
     });
+    $('#loading span').on('click',toggleGoViral);
     
     
     //該做正事ㄌ
@@ -429,6 +454,7 @@ $(document).ready(function(){
     onresizeHandler();
     
     $(window).trigger('scroll');
+
     
     //execute once the entire page (DOM as well as images or iframes) is ready.
     window.onload = function(){
@@ -437,6 +463,7 @@ $(document).ready(function(){
             $('#loading').addClass('hidden');
             $('html,body').removeClass('before-loaded');
             spam_jellies();
+            showNavbarOnLoaded();
         
         },1000);
     };
