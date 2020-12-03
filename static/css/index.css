@@ -22,3 +22,11 @@
     transform: translateY(100px);
     opacity: 0;
 }
+
+
+
+#intro2{
+    background-color: azure;
+    height: 120vh;
+    background-clip: border-box;
+}

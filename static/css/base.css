@@ -349,9 +349,17 @@ body.before-loaded #cover .title > .subtitle{
 .bar.hidden{
     width: 0px;
 }
+
+
+
+
+
+/*for test onlyXD*/
 #test{
     visibility: hidden;
 }
 #test.viral{
     visibility: visible;
 }
+
+
