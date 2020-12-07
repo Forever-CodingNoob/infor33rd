@@ -84,15 +84,18 @@
 #us-inner > span .details{
     background-color: rgba(20, 33, 24, 0.8);
     position: fixed;
+    display: block;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
     text-align: center;
+    transition: visibility .5s linear 0s, background-color .5s linear 0s;
     z-index: 100;
 }
 #us-inner > span .details.hidden{
-    display: none;
+    visibility: hidden;
+    background-color: rgba(20, 33, 24, 0);
 }
 
 #us-inner > span .details-inner{
@@ -116,9 +119,14 @@
     background-color: rgba(56, 125, 86, 1);
     border-top-left-radius: 10%;
     border-bottom-left-radius: 10%;
+    transition: transform .5s ease-in-out 0s;
     overflow: hidden;
     z-index: 120;
 }
+#us-inner > span .details.hidden .details-inner .details-text{
+    transform: scale(0);
+}
+
 #us-inner > span .details-inner .details-name{
     position: absolute;
     display: inline;
@@ -130,8 +138,13 @@
     margin-top: 10%;
     left: 20%;
     transform: translateY(-50%);
+    transition: transform .5s ease-in-out 0s;
     z-index: 130;
 }
+#us-inner > span .details.hidden .details-inner .details-name{
+    transform: translateY(-50vh);
+}
+
 #us-inner > span .details-inner .details-img{
     position: absolute;
     display: inline-block;
