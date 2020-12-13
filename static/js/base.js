@@ -66,13 +66,9 @@ function autoScrollDown(upper_line,lower_line,lowerTargetSec){
                 autoscrolling=false;
                 setCurrentSec(lowerTargetSec);
                 //changeHash(lowerTargetSec);
-                if(lowerTargetSec==0){
-                    //alert('under break point!');
-
-
-                    disableNavbar(true);
-                    showNavbarWhenNeeded();
-                }
+                //alert('under break point!');
+                disableNavbar(true);
+                showNavbarWhenNeeded();
                 $('#show3').text('autoscrolling:'+autoscrolling.toString());
             }
 
