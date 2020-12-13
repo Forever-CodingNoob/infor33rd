@@ -256,6 +256,8 @@ function checkAppearEffectElem(){
                     typingeffect($(this),$(this).hasClass('effect-keep_underscore'));
                 }else if($(this).hasClass('effect-dodging')){
                     setTimeout($.proxy(function(){dodge($(this));},this),1100);
+                }else if($(this).hasClass('effect-widthExtend')){
+                    widthExtendEffect($(this));
                 }
             }
         }else{
@@ -263,6 +265,8 @@ function checkAppearEffectElem(){
                 $(this).addClass('hidden');
                 if($(this).hasClass('effect-dodging')){
                     dont_dodge($(this));
+                }else if($(this).hasClass('effect-widthExtend')){
+                    widthShrinkEffect($(this));
                 }
 
             }
@@ -346,7 +350,12 @@ function upd_centerPos(elem){
 }
 
 
-
+function widthExtendEffect(elem){
+    $(elem).css('width',$(elem).css('--data-extendWidth'));
+}
+function widthShrinkEffect(elem){
+    $(elem).css('width',$(elem).css('--data-shrinkWidth'));
+}
 
 
 
@@ -477,4 +486,4 @@ $(document).ready(function(){
     };
 });
 
-export {currentSec, mousePos, setCurrentSec, showNavbarWhenNeeded, enableNavbar, disableNavbar,dodge,dont_dodge,upd_centerPos};
+export {currentSec, mousePos, setCurrentSec, showNavbarWhenNeeded, enableNavbar, disableNavbar,dodge,dont_dodge,upd_centerPos, widthShrinkEffect, widthExtendEffect};

@@ -24,9 +24,74 @@
 }
 
 
-
+#intro1{
+    margin-bottom: 100px;
+}
 #intro2{
     background-color: azure;
     height: 120vh;
     background-clip: border-box;
+    margin-top: 0px;
+    padding-top: 0;
+    text-align: center;
+}
+#intro2-inner{
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    padding-top: 50px;
+    height: 100vh;
+}
+#intro2-space{
+    background-color: azure;
+    display: block;
+    height: 100px;
+    position: relative;
+}
+#intro2-title{
+    display: block;
+    text-align: center;
+    color: #153e96;
+}
+#intro2 .bar{
+    background-color: #153e96;
+    margin-right: calc( ( 100% - 100px )/2 );
+    margin-left: calc( ( 100% - 100px )/2 );
+    transition: margin-right .5s cubic-bezier(.15,.02,.24,1.82) .5s, margin-left .5s cubic-bezier(.15,.02,.24,1.82) .5s;
+}
+#intro2 .bar.hidden{
+    margin-right: 50%;
+    margin-left: 50%;
+}
+.select-panel{
+    position: relative;
+    flex-grow: 1;
+    flex-basis: auto;
+    background: linear-gradient(90deg, #FC466B 0%, #3F5EFB 100%);
+    height: auto;
+    margin-bottom: 5%;
+    margin-top: 1%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    display: inline-flex;
+    overflow: hidden;
+    transition: width 1s ease-in-out .5s;
+}
+.select-panel.hidden{
+    transition: width 1s ease-in-out 0s;
+}
+.select-panel .left-panel{
+    width: 15%
+}
+.select-panel .middle-panel{
+    position: absolute;
+    /*left: 15%;*/
+    /*right: 15%;*/
+    height: 100%;
+    background-color: aqua;
+}
+.select-panel .right-panel{
+    width: 15%
 }
