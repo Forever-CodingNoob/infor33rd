@@ -153,6 +153,7 @@ function onresizeHandler(){
 $(window).on('resize', onresizeHandler);
 
 
+
 function getMousePosition(event){
     var mouseX=event.pageX-$(window).scrollLeft();
     var mouseY=event.pageY-$(window).scrollTop();
@@ -283,7 +284,8 @@ function dodge(elem){
     const mouse_max_force=75*(timeInterval/100);
 
     var v=[0,0];
-    $(elem).data('center',[pos.left+$(elem).width()/2,pos.top+$(elem).height()/2]);
+    //$(elem).data('center',[pos.left+$(elem).width()/2,pos.top+$(elem).height()/2]);
+    upd_centerPos(elem);
     $(elem).data('radius',$(elem).attr('data-movement_radius'));
     $(elem).data('mouse_radius',$(elem).attr('data-mouse_interact_radius'));
     $(elem).data('oritop',$(elem).css('top'));
@@ -337,6 +339,10 @@ function dodge(elem){
 function dont_dodge(elem){
     clearInterval($(elem).data('interval_id'));
     $(elem).css({'transition-property':'','top':'','left':''});
+}
+function upd_centerPos(elem){
+    const pos=$(elem).offset();
+    $(elem).data('center',[pos.left+$(elem).width()/2,pos.top+$(elem).height()/2]);
 }
 
 
@@ -471,4 +477,4 @@ $(document).ready(function(){
     };
 });
 
-export {currentSec, mousePos, setCurrentSec, showNavbarWhenNeeded, enableNavbar, disableNavbar,dodge,dont_dodge};
+export {currentSec, mousePos, setCurrentSec, showNavbarWhenNeeded, enableNavbar, disableNavbar,dodge,dont_dodge,upd_centerPos};

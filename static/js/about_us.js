@@ -1,4 +1,4 @@
-import {currentSec, setCurrentSec, showNavbarWhenNeeded, enableNavbar, disableNavbar, dodge, dont_dodge} from './base.js';
+import {currentSec, setCurrentSec, showNavbarWhenNeeded, enableNavbar, disableNavbar, dodge, dont_dodge, upd_centerPos} from './base.js';
 var currentPerson=null;
 
 var scrollLockPos=[0,0];
@@ -45,10 +45,18 @@ $(document).on('mousemove', function(){
        showNavbarWhenNeeded(currentPerson!==null);
    }
 });
-function allImgDodging(elem){
+function allImgDodging(){
     $("#us-inner > span .img").each(function(){
         dodge($(this));
     });
+}
+function updAllImgDodingCenterPos(){//error
+    $("#us-inner > span .img").each(function(){
+        upd_centerPos($(this));
+    });
+}
+function onResizeHandler(){
+    allImgDodging();
 }
 
 
@@ -67,6 +75,8 @@ $(document).ready(function(){
     */
     disableScrolling();
     allImgDodging();
+    $(window).on('resize',onResizeHandler);
+    
     $("#us-inner > span .img").hover(
         function(){
             $(this).addClass('effect-dodging-stop');
@@ -86,6 +96,14 @@ $(document).ready(function(){
             //按到空白區域(非name或text)
             history.pushState(null,null,'#');
             open_intro();
+        }
+    });
+    $('#us-inner > span .details-inner .details-img span').on('click',function(e){
+        let target = $(e.target).parents('.details-img').first();
+        if(target.hasClass('active')){
+            target.removeClass('active');
+        }else{
+            target.addClass('active');
         }
     });
     

@@ -170,7 +170,7 @@ body.before-loaded .navbar{
     }
 }
 .navbar.light-effect{
-    background-color: #14a6f5;
+    background-color: #1CB5E0;
 }
 .navbar.light-effect li a{
     color: white;
@@ -179,7 +179,7 @@ body.before-loaded .navbar{
     
 }
 .navbar.light-effect .colored-btn::after{
-    background-color: #325285;
+    background-color: #3a47d5;
 }
 
 #home-btn::after{ 
@@ -348,6 +348,15 @@ body.before-loaded #cover .title > .subtitle{
 }
 .bar.hidden{
     width: 0px;
+}
+.intro a{
+    text-decoration-line: none;
+    color: #c4ff94;
+    transition: transform .1s linear 0s, text-shadow .1s linear 0s;
+}
+.intro a:hover{
+    transform: translateY(-10%);
+    text-shadow: 0px 3px 0px  #658748;
 }
 
 
