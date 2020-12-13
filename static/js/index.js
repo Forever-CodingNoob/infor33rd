@@ -26,5 +26,5 @@ $(document).ready(function(){
     $(window).on('resize',setSelectPanelBorder);
     setSelectPanelWidth();
     setSelectPanelBorder();
-    widthShrinkEffect();
+    widthShrinkEffect($('.select-panel'));
 });
