@@ -5,6 +5,7 @@ var mousePos=[0,0];//mousePos==[mouseX,mouseY]
 var jellies_amount=0;
 
 function setCurrentSec(str){
+    changeHash(str);
     if(str===null){
         currentSec = 'cover';
         return;
@@ -54,7 +55,6 @@ function autoScrollDown(upper_line,lower_line,lowerTargetSec){
     if($(window).scrollTop()+$(window).height()>upper_line+10 && !autoscrolling){
         //alert($(window).scrollTop()+$(window).height()+" "+(upper_line+100));
         autoscrolling=true;
-        var hash="main";
         
         $('html , body').animate(
             {
@@ -64,18 +64,14 @@ function autoScrollDown(upper_line,lower_line,lowerTargetSec){
             //executed after the animation!
             function(){
                 autoscrolling=false;
+                setCurrentSec(lowerTargetSec);
+                //changeHash(lowerTargetSec);
                 if(lowerTargetSec==0){
                     //alert('under break point!');
-                    setCurrentSec(0);
 
-                    //it will automatically scroll the page: window.location.hash=hash;
-                    //use this instead
-                    history.pushState(null,null,'#'+hash);
 
                     disableNavbar(true);
                     showNavbarWhenNeeded();
-                }else{
-                    setCurrentSec(lowerTargetSec);
                 }
                 $('#show3').text('autoscrolling:'+autoscrolling.toString());
             }
@@ -103,13 +99,12 @@ function autoScrollUp(upper_elem_top,upper_line,lower_line,upperTargetSec){
                     //alert('above break point!');
                     setCurrentSec(null);
 
-                    //it will automatically scroll the page: window.location.hash="";
-                    //use this instead
-                    history.pushState(null,null,'#');
+                    //changeHash(null);
 
                     enableNavbar();
                 }else{
                     setCurrentSec(upperTargetSec);
+                    //changeHash(upperTargetSec);
                 }
                 $('#show3').text('autoscrolling:'+autoscrolling.toString());
             }
@@ -118,6 +113,29 @@ function autoScrollUp(upper_elem_top,upper_line,lower_line,upperTargetSec){
         console.log('finished after bp!');
     }
 }
+function changeHash(sectionNum){
+    var hash;
+    if (sectionNum===null) hash = '';
+    else if (sectionNum>=0 && sectionNum<=1) hash = 'introduction';
+    else if (sectionNum==2) hash = 'classes';
+    else return;
+    //it will automatically scroll the page: window.location.hash=hash;
+    //use this instead
+    history.pushState(null,null,'#'+hash);
+}
+function scrollToSection(){
+    let section = decodeURI(window.location.hash.slice(1));
+    let section_num;
+    if(section == 'classes') section_num = 2;
+    else if(section == 'introduction') section_num = 0;
+    else return;
+    
+    autoScrollDown(-1000,$('#intro'+section_num).offset().top,section_num);
+}
+
+
+
+
 
 function onresizeHandler(){
     var main_img= $('#main-img');
@@ -484,6 +502,8 @@ $(document).ready(function(){
         
         },1000);
     };
+    window.onhashchange = scrollToSection;
+    scrollToSection();
 });
 
-export {currentSec, mousePos, setCurrentSec, showNavbarWhenNeeded, enableNavbar, disableNavbar,dodge,dont_dodge,upd_centerPos, widthShrinkEffect, widthExtendEffect};
+export {currentSec, mousePos, setCurrentSec, showNavbarWhenNeeded, enableNavbar, disableNavbar,dodge,dont_dodge,upd_centerPos, widthShrinkEffect, widthExtendEffect, autoScrollDown};
