@@ -1,5 +1,6 @@
 # 建中資訊社第33屆 社網  
 半成品qwq  
+以下筆記用 漏洞百出請見諒
 ## 連線Database(postgresql)
 ### 外部(本機test, 社團server, etc.)  
 * 使用公開IP  
