@@ -1,5 +1,5 @@
 .idea/
 app/__pycache__
 static/js/.eslintrc.json
-.env
+# DO NOT ignore .env file
 secret/
