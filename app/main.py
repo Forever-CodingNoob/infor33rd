@@ -10,10 +10,12 @@ app=Flask(__name__,
           static_folder=os.path.join(os.path.abspath(os.getcwd()),'static')
           )
 
+print('app.env ==',app.env)
 if app.env=='development':
     from dotenv import load_dotenv
     print('loading environment variables from .env file...')
-    load_dotenv(dotenv_path=os.path.join(os.path.abspath(__file__),'..\\..\\.env'))
+    load_dotenv(dotenv_path=os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),'.env'))
+    print('ENV VARS:',os.environ)
 
 
 
